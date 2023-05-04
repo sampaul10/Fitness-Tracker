@@ -14,6 +14,8 @@ const Dashboard = () => {
                 return <Login />;
             case 'MyPage':
                 return <MyPage />;
+            case 'Timer':
+                return <Timer />;
             default:
                 return <Dashboard />;
         }

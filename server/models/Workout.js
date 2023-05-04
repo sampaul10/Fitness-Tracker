@@ -12,7 +12,7 @@ const WorkoutSchema = new Schema({
     time: {
         type: Date //?????? Which 
     },
-    distance: {
+    distance: { //ex: how much miles user has run
         type: Number
     }
 });
