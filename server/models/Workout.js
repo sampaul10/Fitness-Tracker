@@ -12,8 +12,13 @@ const WorkoutSchema = new Schema({
     time: {
         type: Date //?????? Which 
     },
-    distance: {
+    distance: { //ex: how much miles user has run
         type: Number
+    },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true
     }
 });
 

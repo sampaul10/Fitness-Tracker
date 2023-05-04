@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'; // from login tutorial
 import {
   ApolloClient,
   InMemoryCache,
@@ -6,13 +6,17 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Switch } from 'react-router-dom'; // from login tutorial
 // importing pages & components for the routes
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/Dashboard/Dashboard'; // from login tutorial
+import Preferences from './components/Preferences/Preferences';
 import Navbar from './components/Navbar';
 import Timer from './components/Timer';
-import Login from './components/pages/Login';
+import Login from './components/Login/Login';
 import MyPage from './components/pages/MyPage';
+import './App.css';   // from login tutorial
+
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

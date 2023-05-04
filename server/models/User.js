@@ -31,13 +31,16 @@ const userSchema = new Schema({
       minlength: 5
     },
     age: {
-
+      type: Number,
+      required: true
     },
     weight: {
-
+      type: Number,
+      required: true
     },
     height: {
-
+      type: Number,
+      required: true
     },
     workouts: [Workout.schema]
   });
