@@ -5,10 +5,10 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('thoughts');
+      return User.find().populate('achievements');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('thoughts');
+      return User.findOne({ username }).populate('achievements');
     },
     workouts: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -20,9 +20,9 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
+    addUser: async (parent, { firstName, lastName, userName, email, password, age, weight, height }) => {
       // First we create the user
-      const user = await User.create({ username, email, password });
+      const user = await User.create({ firstName, lastName, userName, email, password, age, weight, height });
       // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
       const token = signToken(user);
       // Return an `Auth` object that consists of the signed token and user's information
@@ -51,6 +51,8 @@ const resolvers = {
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
     },
+
+    //TODO add workout to user
   },
 };
 

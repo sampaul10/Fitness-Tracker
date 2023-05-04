@@ -12,7 +12,7 @@ const typeDefs = gql`
         _id: ID
         firstName: String
         lastName: String
-        username: String
+        userName: String
         email: String
         age: Int
         weight: Float
@@ -30,7 +30,10 @@ const typeDefs = gql`
         workout: [Workout]
     }
 
-    type 
+    type Mutation {
+        addUser(firstName: String!, lastName: String!, userName: String!, email: String!, password: String!, age: Int!, weight: Float!, height: Float!): Auth
+        login(email: String!, password: String!): Auth
+    }
 `;
 
 module.exports = typeDefs;
