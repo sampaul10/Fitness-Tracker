@@ -1,24 +1,35 @@
-import React from "react";
+import React from 'react';
+import { useMutation } from '@apollo/client';
+import { useHistory } from 'react-router-dom';
+import { LOGOUT_USER } from '../graphql/mutations';
 
-function Nav(props) {
+const Nav = () => {
+  const history = useHistory();
 
-    const tabs = ["Login", "Workouts", "Timer", "Dashboard"];
+  const [logoutUser] = useMutation(LOGOUT_USER, {
+    onCompleted() {
+      localStorage.removeItem('id_token');
+      history.push('/login');
+    },
+    onError(error) {
+      console.error(error);
+    },
+  });
 
-        return (
-            <ul className="nav-list">
-                {tabs.map(tab => (
-                    <li className="list-item" key={tab}>
-                        <a href={'#' + tab.toLowerCase()}
-                        
-                        // when a tab is selected, current page sent through handlePageChange
-                        onClick={() => props.setCurrentPage(tab)}
-                        className={props.currentPage === tab ? 'navActive' : 'nav-link'}>
-                            <h2>{tab}</h2>
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        );
-}
+  const handleLogout = () => {
+    logoutUser();
+  };
+
+  return (
+    <nav>
+      <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/mypage">My Page</a></li>
+        <li><a href="/timer">Timer</a></li>
+        <li><button onClick={handleLogout}>Log out</button></li>
+      </ul>
+    </nav>
+  );
+};
 
 export default Nav;
