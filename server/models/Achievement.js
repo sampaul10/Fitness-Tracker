@@ -3,14 +3,25 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const AchievementSchema = new Schema({
-    name: { 
-        type: String
+    username: { 
+        type: String,
     },
-    user: {
+    recordDate: {
+        type: Date,
+        default: Date.now,
+        required: true,
+    },
+    record: [
+        {
+        type: Schema.Types.ObjectId,
+        ref: 'Workout',
+        required: true,
+        },      
+        {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true
-    }
+        },
+    ],
 });
 
 module.exports = AchievementSchema;
