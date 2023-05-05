@@ -3,46 +3,48 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 const Workout = require('./Workout');
+const Acheivement = require('./Achievement');
 
 const userSchema = new Schema({
     firstName: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     lastName: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     userName: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
       },
     email: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     password: {
       type: String,
       required: true,
-      minlength: 5
+      minlength: 5,
     },
     age: {
       type: Number,
-      required: true
+      required: true,
     },
     weight: {
       type: Number,
-      required: true
+      required: true,
     },
     height: {
       type: Number,
-      required: true
+      required: true,
     },
-    workouts: [Workout.schema]
+    workouts: [Workout.schema],
+    achievements: [Achievement.schema],
   });
 
   userSchema.pre('save', async function(next) {

@@ -2,6 +2,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Workout, Achievement } = require('../models');
 const { signToken } = require('../utils/auth');
 
+
 const resolvers = {
   Query: {
     users: async () => {
@@ -14,9 +15,14 @@ const resolvers = {
       const params = username ? { username } : {};
       return Workout.find(params).sort({ createdAt: -1 });
     },
-    thought: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
+    record: async (parent, {record}) => {
+      return Achievement.find(record)
     },
+    categories: async () => {
+      return Workout.find().distinct('target', function(error, target) {
+        console.log(target);
+    });
+    }
   },
 
   Mutation: {
@@ -50,6 +56,15 @@ const resolvers = {
 
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
+    },
+    saveAchievement: async (parent, {newRecord}) => {
+      console.log(newRecord)
+      record.push(newRecord.record); 
+      const result = {
+        success: true,
+        record: newRecord.record,
+      };
+      return result;
     },
 
     //TODO add workout to user
