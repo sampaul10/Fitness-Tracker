@@ -18,7 +18,7 @@ const AddWorkoutForm = () => {
     const { loading, data } = useQuery(GET_WORKOUTS);
     const [addworkout, { error }] = useMutation(ADD_WORKOUT);
 
-    
+
 
     const handleFormSubmit = async (event) => {
         
