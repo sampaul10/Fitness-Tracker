@@ -17,8 +17,9 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_WORKOUT = gql`
-    query workout {
+// GET all of the workouts data
+export const QUERY_WORKOUTs = gql` 
+    query workouts {
 
     }
 `;
