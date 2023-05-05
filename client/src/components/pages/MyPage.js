@@ -21,7 +21,7 @@ const MyPage = () => {
           {/* adding workout  */}
           <Button onClick={showModal}></Button>
         </div>
-        <Modal>
+        <Modal show={showAddWorkoutModal} onHide={closeAddWorkoutModal}>
             <Modal.Header closeButton>
                 <Modal.Title>Add Workout!</Modal.Title>
             </Modal.Header>
