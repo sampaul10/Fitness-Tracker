@@ -34,3 +34,10 @@ mutation addUser($firstName: String!, $lastName: String!, $userName: String!, $e
 }
 `;
 
+export const ADD_WORKOUT = gql`
+mutation addWorkout($)
+`;
+
+export const REMOVE_WORKOUT = gql`
+mutation removeWorkout($)
+`;

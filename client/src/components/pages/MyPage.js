@@ -1,31 +1,37 @@
-import React from "react";
-import profilePic from "../../assets/images/profile-pic.png"
+import React, { useState } from "react";
+import profilePic from "../../assets/images/profile-pic.png";
+import CategoryMenu from "../CategoryMenu";
+import WorkoutList from "../WorkoutList";
+import AddWorkoutForm from '../AddWorkoutForm';
+import { Modal, Button } from "react-bootstrap";
 
-const MyPage = () => (
-    <section>
+const MyPage = () => {
+    const [showModal, setShowModal] = useState(false);
+
+    const showAddWorkoutModal = () => setShowModal(true); //show modal
+    const closeAddWorkoutModal = () => setShowModal(false); //hide modal
+
+    return (
+        <div>
         <h2 className="section-header">My Page</h2>
         <img src={profilePic} alt="Profile Pic" />
-
-            <p>
-            Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone 
-            mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper 
-            chantey doubloon starboard grog black jack gangway rutters. 
-            </p>
-
-            <p>
-            Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. 
-            Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account 
-            lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom 
-            heave to.
-            </p>
-
-            <p>
-            Trysail Sail ho Corsair red ensign hulk smartly boom jib rum gangway. Case shot Shiver me timbers 
-            gangplank crack Jennys tea cup ballast Blimey lee snow crow's nest rutters. Fluke jib scourge of the 
-            seven seas boatswain schooner gaff booty Jack Tar transom spirits.
-            </p>
-
-    </section>
-);
+        <div>
+          <CategoryMenu /> {/* Showing exercise category for user's excersie list (categorized by target) */}
+          <WorkoutList /> {/* Showing exercise user's exercise list and option to remove (fetch user's data's 'workouts' and loop thru to display it along with the delete button(or share button)*/}
+          {/* adding workout  */}
+          <Button onClick={showModal}></Button>
+        </div>
+        <Modal>
+            <Modal.Header closeButton>
+                <Modal.Title>Add Workout!</Modal.Title>
+            </Modal.Header>
+            <Modal.Title>
+                {/* Render AddWorkoutForm component when modal is opened*/}
+                <AddWorkoutForm />
+            </Modal.Title>
+        </Modal>
+      </div>
+    );
+};
 
 export default MyPage;

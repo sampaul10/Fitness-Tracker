@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Routes, Route, Switch } from 'react-router-dom
 // importing pages & components for the routes
 import Dashboard from './components/Dashboard/Dashboard'; // from login tutorial
 import Preferences from './components/Preferences/Preferences';
-import Navbar from './components/Navbar';
+import Nav from './components/Nav';
 import Timer from './components/Timer';
 import Login from './components/Login/Login';
 import MyPage from './components/pages/MyPage';
@@ -42,11 +42,16 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [token, setToken] = useState();
+
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
   return (
     <ApolloProvider client={client}>
       <Router>
         <>
-          <Navbar />
+          <Nav />
           <Routes>
             <Route
               path='/'
