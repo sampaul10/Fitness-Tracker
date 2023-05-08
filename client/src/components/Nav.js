@@ -1,18 +1,20 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import Auth from "../utils/auth";
 import { useMutation } from '@apollo/client';
-import { LOGOUT_USER } from '../mutations';
+//import { LOGOUT_USER } from '../utils/mutations';
 import '../../src/App.css'
 
 const Nav = () => {
   const location = useLocation();
-  const [logoutUser] = useMutation(LOGOUT_USER);
+  //const [logoutUser] = useMutation(LOGOUT_USER);
 
   const handleLogout = () => {
     // Remove the JWT token from local storage
     localStorage.removeItem('id_token');
     // Execute the logout mutation
-    logoutUser();
+    //logoutUser();
+    Auth.logout();
   };
 
   return (
