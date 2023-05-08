@@ -14,17 +14,11 @@ const typeDefs = gql`
     }
 
     type Achievement {
-        _id: ID    
-        record: [RecordData]
+        achievementId: ID    
+        record: [Workout]
+        recordDate: String
     }
 
-    input RecordData {
-        _id: ID
-        username: ID
-        workouts: [Workout]!
-        achievementDate: String!
-        userInfo: [User]
-    }
 
     type User {
         _id: ID
@@ -36,6 +30,7 @@ const typeDefs = gql`
         weight: Float
         height: Float
         workouts: [Workout]
+        achievements: [Achievement]
     }
 
     type Auth {
@@ -51,7 +46,8 @@ const typeDefs = gql`
     type Mutation {
         addUser(firstName: String!, lastName: String!, userName: String!, email: String!, password: String!, age: Int!, weight: Float!, height: Float!): Auth
         login(email: String!, password: String!): Auth
-        saveAchievement(record: [RecordData]):Acheivement
+        saveAchievement(record: [ID]):User
+        removeAchievement(achievementId: ID): User
     }
 `;
 

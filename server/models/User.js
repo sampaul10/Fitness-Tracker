@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Workout = require('./Workout');
-const Acheivement = require('./Achievement');
+const AchievementSchema = require('./Achievement');
 
 const userSchema = new Schema({
     firstName: {
@@ -43,8 +42,11 @@ const userSchema = new Schema({
       type: Number,
       required: true,
     },
-    workouts: [Workout.schema],
-    achievements: [Achievement.schema],
+    workouts: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Workout',
+      }],
+    achievements: [AchievementSchema],
   });
 
   userSchema.pre('save', async function(next) {

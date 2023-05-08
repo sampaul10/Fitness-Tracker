@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
+const { Schema, model, Types } = mongoose;
 
 
 
 const WorkoutSchema = new Schema({
-    id: {
+    excerciseId: {
         type: Number, 
     },
     gifUrl: {
@@ -36,6 +36,13 @@ const WorkoutSchema = new Schema({
         min: 0,
         default: 0,
     },
+},
+{
+    toJSON: {
+        virtuals: true,
+        getters: true,
+    },
+    id: false
 });
-
-module.exports = WorkoutSchema;
+const Workout = model("Workout", WorkoutSchema)
+module.exports = Workout;
