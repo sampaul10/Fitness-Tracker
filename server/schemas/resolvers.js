@@ -61,11 +61,11 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!"); //if not logged in and trying to add workout, throw error message
     },
-    removeWorkout: async (parent, { workoutId }, context) => {
+    removeWorkout: async (parent, { _id }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { workouts : workoutId } },
+          { $pull: { workouts : _id } },
           { new: true }
         );
 
@@ -108,11 +108,11 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeAchievement: async (parent, { achievementId }, context) => {
+    removeAchievement: async (parent, { _id }, context) => {
       if(context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id},
-          { $pull: { achievements: { achievementId } } },
+          { $pull: { achievements: { _id } } },
           { new: true }
         );
         return updatedUser;

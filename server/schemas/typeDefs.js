@@ -1,6 +1,7 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+
     type Workout {
         _id: ID
         name: String
@@ -17,7 +18,7 @@ const typeDefs = gql`
         _id: ID
         recordDate: String   
         username: String
-        workouts: [Workout]!
+        record: [Workout]!
     }
 
     type User {
@@ -63,7 +64,7 @@ const typeDefs = gql`
         addWorkout(workoutData: WorkoutInput): User
         removeWorkout(_id: ID!): User
         login(email: String!, password: String!): Auth
-        saveAchievement(recordDate: String, username: String, workouts: [WorkoutInput]!): User
+        saveAchievement(recordDate: String, username: String, record: [WorkoutInput]!): User
         removeAchievement(_id: ID!): User
     }
 `;
