@@ -2,12 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema, model, Types } = mongoose;
 
-
-
 const WorkoutSchema = new Schema({
-    excerciseId: {
-        type: Number, 
-    },
     gifUrl: {
         type: String, 
     },
@@ -44,5 +39,7 @@ const WorkoutSchema = new Schema({
     },
     id: false
 });
-const Workout = model("Workout", WorkoutSchema)
+
+const Workout = mongoose.model('Workout', WorkoutSchema);
+
 module.exports = Workout;
