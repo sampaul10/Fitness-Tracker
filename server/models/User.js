@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 const Workout = require('./Workout');
-const Acheivement = require('./Achievement');
+const Achievement = require('./Achievement');
 
 const userSchema = new Schema({
     firstName: {

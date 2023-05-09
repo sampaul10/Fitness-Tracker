@@ -16,12 +16,10 @@ const AchievementSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Workout',
         required: true,
-        },      
-        {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        },
+        }
     ],
 });
 
-module.exports = AchievementSchema;
+const Achievement = mongoose.model('Achievement', AchievementSchema);
+
+module.exports = Achievement;

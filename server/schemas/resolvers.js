@@ -5,10 +5,14 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("achievements");
+      return User.find()
+      .populate("achievements")
+      .populate("workouts");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("achievements");
+      return User.findOne({ username })
+      .populate("achievements")
+      .populate("workouts");
     },
     workouts: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -92,13 +96,13 @@ const resolvers = {
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
     },
-    saveAchievement: async (parent, { newRecord }, context) => {
-      console.log(newRecord);
+    saveAchievement: async (parent, args, context) => {
+      //console.log(newRecord);
       if(context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { a}}
-
+          { $push: args },
+          { new: true }
         );
         return updatedUser;
       }
