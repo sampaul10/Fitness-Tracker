@@ -2,12 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-
-
 const WorkoutSchema = new Schema({
-    id: {
-        type: Number, 
-    },
     gifUrl: {
         type: String, 
     },

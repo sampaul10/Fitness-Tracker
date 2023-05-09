@@ -1,38 +1,73 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Workout, Achievement } = require('../models');
-const { signToken } = require('../utils/auth');
-
+const { AuthenticationError } = require("apollo-server-express");
+const { User, Workout, Achievement } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('achievements');
+      return User.find().populate("achievements");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('achievements');
+      return User.findOne({ username }).populate("achievements");
     },
     workouts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Workout.find(params).sort({ createdAt: -1 });
     },
-    record: async (parent, {record}) => {
-      return Achievement.find(record)
+    record: async (parent, { record }) => {
+      return Achievement.find(record);
     },
     categories: async () => {
-      return Workout.find().distinct('target', function(error, target) {
+      return Workout.find().distinct("target", function (error, target) {
         console.log(target);
-    });
-    }
+      });
+    },
   },
 
   Mutation: {
-    addUser: async (parent, { firstName, lastName, userName, email, password, age, weight, height }) => {
+    addUser: async (
+      parent,
+      { firstName, lastName, userName, email, password, age, weight, height }
+    ) => {
       // First we create the user
-      const user = await User.create({ firstName, lastName, userName, email, password, age, weight, height });
+      const user = await User.create({
+        firstName,
+        lastName,
+        userName,
+        email,
+        password,
+        age,
+        weight,
+        height,
+      });
       // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
       const token = signToken(user);
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
+    },
+    addWorkout: async (parent, { workoutData }, context) => {
+      console.log(context);
+      if (context.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { workouts: workoutData } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("You need to be logged in!"); //if not logged in and trying to add workout, throw error message
+    },
+    removeWorkout: async (parent, { workoutId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { workouts : workoutId } },
+          { new: true }
+        );
+
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
     login: async (parent, { email, password }) => {
       // Look up the user by the provided email address. Since the `email` field is unique, we know that only one person will exist with that email
@@ -40,7 +75,7 @@ const resolvers = {
 
       // If there is no user with that email address, return an Authentication error stating so
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError("No user found with this email address");
       }
 
       // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
@@ -48,7 +83,7 @@ const resolvers = {
 
       // If the password is incorrect, return an Authentication error stating so
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
       // If email and password are correct, sign user into the application with a JWT
@@ -57,17 +92,29 @@ const resolvers = {
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
     },
-    saveAchievement: async (parent, {newRecord}) => {
-      console.log(newRecord)
-      record.push(newRecord.record); 
-      const result = {
-        success: true,
-        record: newRecord.record,
-      };
-      return result;
-    },
+    saveAchievement: async (parent, { newRecord }, context) => {
+      console.log(newRecord);
+      if(context.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { a}}
 
-    //TODO add workout to user
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeAchievement: async (parent, { achievementId }, context) => {
+      if(context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id},
+          { $pull: { achievements: { achievementId } } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 
