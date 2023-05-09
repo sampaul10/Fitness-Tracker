@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
-    mutation login($email: String!, $password: String!) {
+    mutation loginUser($email: String!, $password: String!) {
         login(email: $email, password: $password) {
         token
         user {
@@ -13,32 +13,42 @@ export const LOGIN_USER = gql`
             age
             weight
             height
+            workouts {
+            _id
+            name
+            bodyPart
+            equipment
+            target
+            gifUrl
+            repetition
+            time
+            distance
+            }
+            achievements {
+            _id
+            recordDate
+            username
+            record {
+                _id
+                name
+                bodyPart
+                equipment
+                target
+                gifUrl
+                repetition
+                time
+                distance
+                    }
+                }
             }
         }
     }
 `;
 
 export const ADD_USER = gql`
-mutation addUser($firstName: String!, $lastName: String!, $userName: String!, $email: String!, $password: String!, $age: Int!, $weight: Float!, $height: Float!) {
-    addUser(firstName: $firstName, lastName: $lastName, userName: $userName, email: $email, password: $password, age: $age, weight: $weight, height: $height) {
-    token
-    user {
-        _id
-        firstName
-        lastName
-        userName
-        email
-        age
-        weight
-        height
-        }
-    }
-}
-`;
-
-export const ADD_WORKOUT = gql`
-mutation addWorkout($name: String!, $bodyPart: String!, $equipment: String!, $target: String!, $gifUrl: String, $repetition: Int, $time: String, $distance: Float){
-    addWorkout(name: $name, bodyPart: $bodyPart, equipment: $equipment, target: $target, target: $target, repetition: $repetition, time: $time, distance: $distance){
+    mutation addUser($firstName: String!, $lastName: String!, $userName: String!, $email: String!, $password: String!, $age: Int!, $weight: Float!, $height: Float!) {
+        addUser(firstName: $firstName, lastName: $lastName, userName: $userName, email: $email, password: $password, age: $age, weight: $weight, height: $height) {
+        token
         user {
             _id
             firstName
@@ -49,6 +59,21 @@ mutation addWorkout($name: String!, $bodyPart: String!, $equipment: String!, $ta
             weight
             height
             workouts {
+            _id
+            name
+            bodyPart
+            equipment
+            target
+            gifUrl
+            repetition
+            time
+            distance
+            }
+            achievements {
+            _id
+            recordDate
+            username
+            record {
                 _id
                 name
                 bodyPart
@@ -58,10 +83,53 @@ mutation addWorkout($name: String!, $bodyPart: String!, $equipment: String!, $ta
                 repetition
                 time
                 distance
+                    }
                 }
             }
+        }
     }
-}
+`;
+
+export const ADD_WORKOUT = gql`
+    mutation addWorkout($workoutData: WorkoutInput!) {
+        addWorkout(workoutData: $workoutData) {
+        _id
+        firstName
+        lastName
+        userName
+        email
+        age
+        weight
+        height
+        workouts {
+            _id
+            name
+            bodyPart
+            equipment
+            target
+            gifUrl
+            repetition
+            time
+            distance
+        }
+        achievements {
+            _id
+            recordDate
+            username
+            record {
+            _id
+            name
+            bodyPart
+            equipment
+            target
+            gifUrl
+            repetition
+            time
+            distance
+            }
+        }
+        }
+    }
 `;
 
 export const REMOVE_WORKOUT = gql`
