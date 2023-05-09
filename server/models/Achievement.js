@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
+const { Schema, model, Types } = mongoose;
 
 const AchievementSchema = new Schema({
-    username: { 
-        type: String,
+    achievementId: {
+        type: Schema.Types.ObjectId,
+        default: () => new Types.ObjectId()
     },
     recordDate: {
         type: Date,
@@ -16,8 +17,15 @@ const AchievementSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Workout',
         required: true,
-        }
+        },      
     ],
+},
+{
+    toJSON: {
+        virtuals: true,
+        getters: true,
+    },
+    id: false
 });
 
 const Achievement = mongoose.model('Achievement', AchievementSchema);

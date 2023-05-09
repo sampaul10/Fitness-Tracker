@@ -43,8 +43,11 @@ const userSchema = new Schema({
       type: Number,
       required: true,
     },
-    workouts: [Workout.schema],
-    achievements: [Achievement.schema],
+    workouts: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Workout',
+      }],
+    achievements: [AchievementSchema],
   });
 
   userSchema.pre('save', async function(next) {
