@@ -29,14 +29,25 @@ const Nav = () => {
             <li className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}>
               <Link to="/" className="nav-link">Dashboard</Link>
             </li>
-            <li className={`nav-item ${location.pathname === '/mypage' ? 'active' : ''}`}>
-              <Link to="/mypage" className="nav-link">My Page</Link>
-            </li>
+            {/* if user is logged in show saved books and logout */}
+            {Auth.loggedIn() ? (
+              <>
+                <li className={`nav-item ${location.pathname === '/mypage' ? 'active' : ''}`}>
+                  <Link to="/mypage" className="nav-link">My Page</Link>
+                </li>
+                <li>
+                  <Link onClick={handleLogout} className="btn btn-outline-primary">Logout</Link>
+                </li>
+              </>
+            ) : (
+              <li className={`nav-item ${location.pathname === '/login' ? 'active' : ''}`}>
+                <Link to="/login" className="nav-link">Login/Sign Up</Link>
+              </li>
+            )}
             <li className={`nav-item ${location.pathname === '/timer' ? 'active' : ''}`}>
               <Link to="/timer" className="nav-link">Timer</Link>
             </li>
           </ul>
-          <button onClick={handleLogout} className="btn btn-outline-primary">Logout</button>
         </div>
       </div>
     </nav>
