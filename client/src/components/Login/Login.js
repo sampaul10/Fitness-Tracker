@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import './Login.css';
@@ -35,7 +36,8 @@ function Login(props) {
   };
 
   return (
-    <div className="login-container">
+    <div>
+      <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
@@ -72,6 +74,12 @@ function Login(props) {
         </button>
       </form>
     </div>
+
+    <div>
+          <h2>New User? <Link to="/signup">Signup here!</Link></h2>
+    </div>
+    </div>
+    
   );
 }
 

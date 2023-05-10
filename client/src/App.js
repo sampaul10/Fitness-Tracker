@@ -14,6 +14,7 @@ import Preferences from './components/Preferences/Preferences';
 import Nav from './components/Nav';
 import Timer from './components/Timer';
 import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
 import MyPage from './pages/MyPage';
 //import './App.css';   // from login tutorial
 
@@ -61,6 +62,10 @@ function App() {
             <Route
               path='/login'
               element={<Login />}
+            />
+                        <Route
+              path='/signup'
+              element={<Signup />}
             />
             <Route
               path='/mypage'
