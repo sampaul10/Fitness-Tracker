@@ -8,13 +8,14 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route, Switch } from 'react-router-dom'; // from login tutorial
 // importing pages & components for the routes
-import Dashboard from './components/Dashboard/Dashboard'; // from login tutorial
+import Dashboard from './pages/Dashboard'; // from login tutorial
+import Footer from './components/Footer'
 import Preferences from './components/Preferences/Preferences';
 import Nav from './components/Nav';
 import Timer from './components/Timer';
 import Login from './components/Login/Login';
-import MyPage from './components/pages/MyPage';
-import './App.css';   // from login tutorial
+import MyPage from './pages/MyPage';
+//import './App.css';   // from login tutorial
 
 
 
@@ -42,11 +43,11 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [token, setToken] = useState();
+  //const [token, setToken] = useState();
 
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
+  //if(!token) {
+  //  return <Login setToken={setToken} />
+  //}
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -74,6 +75,7 @@ function App() {
               element={<h1 className='display-2'>Wrong page!</h1>}
             />
           </Routes>
+          <Footer />
         </>
       </Router>
     </ApolloProvider>

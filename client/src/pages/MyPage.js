@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import profilePic from "../../assets/images/profile-pic.png";
-import CategoryMenu from "../CategoryMenu";
-import WorkoutList from "../WorkoutList";
-import AddWorkoutForm from '../AddWorkoutForm';
+import profilePic from "../assets/images/profile-pic.png";
+import CategoryMenu from "../components/CategoryMenu";
+import WorkoutList from "../components/WorkoutList";
+import AddWorkoutForm from '../components/AddWorkoutForm';
 import { Modal, Button } from "react-bootstrap";
 
 const MyPage = () => {
