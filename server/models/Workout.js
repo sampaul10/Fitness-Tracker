@@ -24,13 +24,18 @@ const WorkoutSchema = new Schema({
         default: 0,
     },
     time: {
-        type: Date, //?????? Which 
+        type: Number, //?????? Which 
     },
     distance: { //ex: how much miles user has run
         type: Number,
         min: 0,
         default: 0,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
 },
 {
     toJSON: {
