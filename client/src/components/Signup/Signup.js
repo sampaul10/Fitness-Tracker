@@ -5,19 +5,33 @@ import Auth from '../../utils/auth';
 import { ADD_USER } from '../../utils/mutations';
 
 function Signup(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addUser] = useMutation(ADD_USER);
-
+  const [formState, setFormState] = useState({ 
+    firstName: '',
+    lastName: '',
+    userName: '',
+    email: '',
+    password: '',
+    age: 0,
+    weight: 0,
+    height: 0,
+});
+  const [addUser, { error }] = useMutation(ADD_USER);
+    console.log(error);
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
-        email: formState.email,
-        password: formState.password,
         firstName: formState.firstName,
         lastName: formState.lastName,
+        userName: formState.userName,
+        email: formState.email,
+        password: formState.password,
+        age: parseInt(formState.age),
+        weight: parseInt(formState.weight),
+        height: parseInt(formState.height),
       },
     });
+    console.log(mutationResponse);
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
   };
@@ -41,7 +55,7 @@ function Signup(props) {
           <input
             placeholder="First"
             name="firstName"
-            type="firstName"
+            type="text"
             id="firstName"
             onChange={handleChange}
           />
@@ -51,8 +65,18 @@ function Signup(props) {
           <input
             placeholder="Last"
             name="lastName"
-            type="lastName"
+            type="text"
             id="lastName"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="userName">Username:</label>
+          <input
+            placeholder="Username"
+            name="userName"
+            type="username"
+            id="userName"
             onChange={handleChange}
           />
         </div>
@@ -75,6 +99,38 @@ function Signup(props) {
             id="pwd"
             onChange={handleChange}
           />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="age">Age:</label>
+          <input
+            placeholder="Age"
+            name="age"
+            type="number"
+            id="age"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="weight">Weight:</label>
+          <input
+            placeholder="weight"
+            name="weight"
+            type="number"
+            id="weight"
+            onChange={handleChange}
+          />
+           lbs
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="height">Height:</label>
+          <input
+            placeholder="height"
+            name="height"
+            type="number"
+            id="height"
+            onChange={handleChange}
+          />
+           ft
         </div>
         <div className="flex-row flex-end">
           <button type="submit">Submit</button>

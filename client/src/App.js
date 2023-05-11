@@ -18,8 +18,6 @@ import Signup from './components/Signup/Signup';
 import MyPage from './pages/MyPage';
 //import './App.css';   // from login tutorial
 
-
-
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
