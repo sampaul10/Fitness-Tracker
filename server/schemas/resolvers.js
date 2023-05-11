@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Workout, Achievement } = require("../models");
+const { User, Workout, Achievement, Exercise } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -29,6 +29,9 @@ const resolvers = {
     workouts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Workout.find(params).sort({ createdAt: -1 });
+    },
+    exercises: async (parent, { exercises }) => {
+      return Exercise.find(exercises);
     },
     record: async (parent, { record }) => {
       return Achievement.find(record);

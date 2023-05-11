@@ -14,6 +14,16 @@ const typeDefs = gql`
         distance: Float
     }
 
+    type Exercise {
+        _id: ID
+        name: String
+        bodyPart: String
+        equipment: String
+        target: String
+        gifUrl: String
+    }
+
+
     type Achievement {
         _id: ID
         recordDate: String   
@@ -55,6 +65,7 @@ const typeDefs = gql`
         user: User
         users: [User]
         workouts: [Workout]
+        exercises: [Exercise]
         record: Achievement
         categories: Workout
     }

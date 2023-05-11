@@ -17,12 +17,7 @@ const ExerciseSchema = new Schema({
     },
     name: { //name/type of Workout
         type: String,
-    },
-    repetition: {
-        type: Number,
-        min: 0,
-        default: 0,
-    },
+    }
 },
 {
     toJSON: {
