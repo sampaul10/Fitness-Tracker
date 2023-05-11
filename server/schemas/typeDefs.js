@@ -44,6 +44,11 @@ const typeDefs = gql`
         achievements: [Achievement]
     }
 
+    type Category {
+        _id: ID
+        target: String
+    }
+
     input WorkoutInput {
         _id: ID
         name: String
@@ -68,7 +73,7 @@ const typeDefs = gql`
         workouts: [Workout]
         exercises: [Exercise]
         record: Achievement
-        categories: Workout
+        categories: [Category]
     }
 
     type Mutation {

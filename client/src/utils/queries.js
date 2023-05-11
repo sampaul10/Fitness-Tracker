@@ -143,8 +143,24 @@ export const GET_WORKOUTS = gql`
   }
 `;
 
+export const GET_EXERCISES = gql`
+  {
+    exercises {
+      _id
+      name
+      bodyPart
+      equipment
+      target
+      gifUrl
+    }
+  }
+`;
+
 export const QUERY_CATEGORIES = gql`
-  query { 
-    categories 
+  { 
+  categories {
+    _id
+    target
+    }
   }
 `;

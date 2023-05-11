@@ -4,7 +4,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_ME } from "../../utils/queries";
 import { ADD_WORKOUT } from "../../utils/mutations";
-import { GET_WORKOUTS } from '../../utils/queries';
+import { GET_EXERCISES } from '../../utils/queries';
 import { saveWorkoutIds, getSavedWorkoutIds } from "../../utils/localStorage";
 import Auth from "../../utils/auth";
 
@@ -16,7 +16,8 @@ const AddWorkoutForm = () => {
     const [workoutFormData, setWorkoutFormData] = useState({});
     const [savedWorkoutIds, setSavedWorkoutIds] = useState(getSavedWorkoutIds);
 
-    const { loading, data } = useQuery(GET_WORKOUTS); //get all of the workouts data
+    const { loading, data } = useQuery(GET_EXERCISES); //get all of the workouts data
+    console.log(data);
     const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
 
     useEffect(() => {
@@ -25,31 +26,58 @@ const AddWorkoutForm = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        //loads workouts data to add into option list
+        console.log("workoutformData: ", workoutFormData);
         try {
-            await addWorkout({
-                variables: { workout: { ...workoutFormData } },
-            });
-
-            setWorkoutFormData({
-                name: '',
-                bodyPart: '',
-                equipment: '',
-                target: ''
-            });
-
+          const { data } = await addWorkout({
+            variables: { workoutInput: { ...workoutFormData } },
+          });
+          console.log("Created workout: ", data.addWorkout);
+          setWorkoutFormData({
+            id: "",
+            name: "",
+            bodyPart: "",
+            equipment: "",
+            target: "",
+            gifUrl: "",
+            repetition: 0,
+            time: "",
+            distance: 0,
+          });
         } catch (err) {
-            console.log(err);
+          console.log(err);
         }
-
-    };
+      };
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setWorkoutFormData({ ...workoutFormData, [name]: value });
-    };
+        const { workout, ...rest } = workoutFormData;
+      
+        if (name === "workout") {
+          const selectedWorkout = data.exercises.find(
+            (workout) => workout._id === value
+          );
+          setWorkoutFormData({
+            ...rest,
+            name: selectedWorkout.name,
+            bodyPart: selectedWorkout.bodyPart,
+            equipment: selectedWorkout.equipment,
+            target: selectedWorkout.target,
+            gifUrl: selectedWorkout.gifUrl,
+            repetition: parseInt(rest.repetition) || 0,
+            time: rest.time || "",
+            distance: parseFloat(rest.distance) || 0,
+            id: selectedWorkout._id,
+          });
+        } else {
+          setWorkoutFormData({
+            ...workoutFormData,
+            [name]: value,
+          });
+        }
+      };
 
-    const handleAddWorkout = async () => {
+    const handleAddWorkout = async (event) => {
+        event.preventDefault();
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
@@ -64,7 +92,11 @@ const AddWorkoutForm = () => {
                 name: '',
                 bodyPart: '',
                 equipment: '',
-                target: ''
+                target: '',
+                gifUrl: '',
+                repetition: 0,
+                time: '',
+                distance: 0
             });
         } catch (err) {
             console.log(err);
@@ -87,12 +119,42 @@ const AddWorkoutForm = () => {
                         value={workoutFormData.workout || ''}
                     >
                         <option value="">Select a workout</option>
-                        {data.map((workout) => (
+                        {data.exercises.map((workout) => (
                             <option key={workout._id} value={workout._id}>
                                 {workout.name}
                             </option>
                         ))}
+
                     </Form.Control>
+
+                    <Form.Label>Enter Repetition (if Applicable):</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="repetition"
+                        placeholder="Ex: 2"
+                        onChange={handleInputChange}
+                        value={workoutFormData.repetition || 0}
+                    >
+                    </Form.Control>
+
+                    <Form.Label>Enter Time (if Applicable):</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="time"
+                        placeholder="Ex: 10 mins"
+                        onChange={handleInputChange}
+                        value={workoutFormData.time || ''}
+                    ></Form.Control>
+
+                    <Form.Label>Enter Disatnce (if Applicable) (meters):</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="distance"
+                        placeholder="Ex: 100 m"
+                        onChange={handleInputChange}
+                        value={workoutFormData.distance || 0}
+                    ></Form.Control>
+
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
