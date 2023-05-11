@@ -1,5 +1,47 @@
 import { gql } from "@apollo/client";
 
+export const GET_ME = `
+  query me {
+    me {
+      _id 
+      firstName 
+      lastName 
+      userName 
+      email 
+      age 
+      weight 
+      height 
+      workouts {
+          _id 
+          name 
+          bodyPart 
+          equipment 
+          target 
+          gifUrl 
+          repetition 
+          time 
+          distance
+        } 
+      achievements { 
+        _id 
+        recordDate 
+        username 
+        record { 
+          _id
+          name 
+          bodyPart 
+          equipment 
+          target 
+          gifUrl 
+          repetition 
+          time 
+          distance 
+        } 
+      } 
+    }
+  }
+`;
+
 export const GET_USER = gql `
   query 
   { 
