@@ -1,4 +1,6 @@
 
+import React from "react";
+import Card from 'react-bootstrap/Card';
 
 const Footer = () => {
 
@@ -17,13 +19,30 @@ const Footer = () => {
     return (
         
         <footer className="footer">
-            <ul className="nav-list footer-list">
-                {links.map((link) => (
-                    <li className="list-item" key={link.name}>
-                        <a href={link.url} target="_blank" rel="noopener noreferrer">{link.name}</a>
-                    </li>
-                ))}
-            </ul>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Body>
+        <Card.Title>Nike Running</Card.Title>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content. Link to Nike.com
+        </Card.Text>
+        <Card.Link href="https://www.nike.com/running/training-plans">Nike Running Training Plan</Card.Link>
+      </Card.Body>
+    </Card>
+
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Body>
+        <Card.Title>Nike Running</Card.Title>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content. Link to Nike.com
+        </Card.Text>
+        <Card.Link href="https://www.nike.com/running/training-plans">Nike Running Training Plan</Card.Link>
+      </Card.Body>
+    </Card>
+
         </footer>
     );
 }
