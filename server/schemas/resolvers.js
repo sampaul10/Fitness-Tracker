@@ -1,12 +1,11 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Workout, Achievement } = require("../models");
+const { User, Workout, Achievement, Exercise, Category } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    /*
-        me: async (parent, args, context) => {
-      if(context.user){
+    me: async (parent, args, context) => {
+      if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .populate('achievements')
           .populate('workouts');
@@ -15,28 +14,34 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    */
     users: async () => {
       return User.find()
-      .populate("achievements")
-      .populate("workouts");
+        .populate("achievements")
+        .populate("workouts");
     },
     user: async (parent, { username }) => {
       return User.findOne({ username })
-      .populate("achievements")
-      .populate("workouts");
+        .populate("achievements")
+        .populate("workouts");
     },
     workouts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Workout.find(params).sort({ createdAt: -1 });
     },
+    exercises: async (parent, { exercises }) => {
+      return Exercise.find(exercises);
+    },
     record: async (parent, { record }) => {
       return Achievement.find(record);
     },
     categories: async () => {
-      return Workout.find().distinct("target", function (error, target) {
+      /*return Exercise.find().distinct("target", function (error, target) {
         console.log(target);
-      });
+      });*/
+      const targets = await Exercise.find().distinct("target");
+      //console.log(targets);
+      const categories = await Promise.all(targets.map(target => Category.create({ target: target })));
+      return categories;
     },
   },
 
@@ -62,11 +67,15 @@ const resolvers = {
       return { token, user };
     },
     addWorkout: async (parent, { workoutData }, context) => {
-      console.log(context);
+      //console.log(context);
       if (context.user) {
+        //console.log(workoutData);
+        const workout = await Workout.create(workoutData);
+        //console.log(workout._id);
+
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { workouts: workoutData } },
+          { $push: { workouts: workout._id } },
           { new: true }
         );
         return updatedUser;
@@ -77,7 +86,7 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { workouts : _id } },
+          { $pull: { workouts: _id } },
           { new: true }
         );
 
@@ -110,7 +119,7 @@ const resolvers = {
     },
     saveAchievement: async (parent, args, context) => {
       //console.log(newRecord);
-      if(context.user) {
+      if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: args },
@@ -121,9 +130,9 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     removeAchievement: async (parent, { _id }, context) => {
-      if(context.user) {
+      if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id},
+          { _id: context.user._id },
           { $pull: { achievements: { _id } } },
           { new: true }
         );

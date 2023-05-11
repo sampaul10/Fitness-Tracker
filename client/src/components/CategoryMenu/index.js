@@ -11,18 +11,16 @@ import { idbPromise } from '../../utils/helpers';
 
 function CategoryMenu() {
     const [state, dispatch] = useStoreContext();
-
     const { categories } = state;
-  
-    const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
-  
+    const { loading, data } = useQuery(QUERY_CATEGORIES);
+    
     useEffect(() => {
-      if (categoryData) {
+      if (data) {
         dispatch({
           type: UPDATE_CATEGORIES,
-          categories: categoryData.categories,
+          categories: data.categories,
         });
-        categoryData.categories.forEach((category) => {
+        data.categories.forEach((category) => {
           idbPromise('categories', 'put', category);
         });
       } else if (!loading) {
@@ -33,7 +31,7 @@ function CategoryMenu() {
           });
         });
       }
-    }, [categoryData, loading, dispatch]);
+    }, [data, loading, dispatch]);
   
     const handleClick = (id) => {
       dispatch({
@@ -41,7 +39,7 @@ function CategoryMenu() {
         currentCategory: id,
       });
     };
-  
+
     return (
       <div>
         <h2>Choose a Excercise Category:</h2>
@@ -52,7 +50,7 @@ function CategoryMenu() {
               handleClick(item._id);
             }}
           >
-            {item.name}
+            {item.target}
           </button>
         ))}
       </div>

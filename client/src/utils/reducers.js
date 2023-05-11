@@ -7,10 +7,11 @@ import {
 export const reducer = (state, action) => {
   switch (action.type) {
     case UPDATE_CATEGORIES:
-      return {
+      const newState = {
         ...state,
         categories: [...action.categories],
       };
+      return newState;
 
     case UPDATE_CURRENT_CATEGORY:
       return {
@@ -18,13 +19,11 @@ export const reducer = (state, action) => {
         currentCategory: action.currentCategory,
       };
 
-    // TODO: Add a comment describing what the default case is for
-    // Your comment here// if none of the case applied , return default state.
     default:
       return state;
   }
 };
 
-export function useProductReducer(initialState) {
+export function useCategoryReducer(initialState) {
   return useReducer(reducer, initialState);
 }

@@ -8,7 +8,7 @@ const Dashboard = () => {
     return (
         <div>
             <header className="header">
-                <h1>YouFit</h1>
+                <h1>U-Fit</h1>
             </header>
             <h1>Dashboard Page!</h1> 
             

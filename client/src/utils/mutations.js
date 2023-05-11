@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
-    mutation loginUser($email: String!, $password: String!) {
+    mutation login($email: String!, $password: String!) {
         login(email: $email, password: $password) {
         token
         user {
@@ -14,21 +14,6 @@ export const LOGIN_USER = gql`
             weight
             height
             workouts {
-            _id
-            name
-            bodyPart
-            equipment
-            target
-            gifUrl
-            repetition
-            time
-            distance
-            }
-            achievements {
-            _id
-            recordDate
-            username
-            record {
                 _id
                 name
                 bodyPart
@@ -38,6 +23,21 @@ export const LOGIN_USER = gql`
                 repetition
                 time
                 distance
+                }
+            achievements {
+                _id
+                recordDate
+                username
+                record {
+                    _id
+                    name
+                    bodyPart
+                    equipment
+                    target
+                    gifUrl
+                    repetition
+                    time
+                    distance
                     }
                 }
             }
@@ -59,21 +59,6 @@ export const ADD_USER = gql`
             weight
             height
             workouts {
-            _id
-            name
-            bodyPart
-            equipment
-            target
-            gifUrl
-            repetition
-            time
-            distance
-            }
-            achievements {
-            _id
-            recordDate
-            username
-            record {
                 _id
                 name
                 bodyPart
@@ -83,6 +68,21 @@ export const ADD_USER = gql`
                 repetition
                 time
                 distance
+                }
+            achievements {
+                _id
+                recordDate
+                username
+                record {
+                    _id
+                    name
+                    bodyPart
+                    equipment
+                    target
+                    gifUrl
+                    repetition
+                    time
+                    distance
                     }
                 }
             }
@@ -91,7 +91,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_WORKOUT = gql`
-    mutation addWorkout($workoutData: WorkoutInput!) {
+    mutation addWorkout($workoutData: WorkoutInput) {
         addWorkout(workoutData: $workoutData) {
         _id
         firstName

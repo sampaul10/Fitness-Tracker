@@ -14,6 +14,16 @@ const typeDefs = gql`
         distance: Float
     }
 
+    type Exercise {
+        _id: ID
+        name: String
+        bodyPart: String
+        equipment: String
+        target: String
+        gifUrl: String
+    }
+
+
     type Achievement {
         _id: ID
         recordDate: String   
@@ -34,6 +44,11 @@ const typeDefs = gql`
         achievements: [Achievement]
     }
 
+    type Category {
+        _id: ID
+        target: String
+    }
+
     input WorkoutInput {
         _id: ID
         name: String
@@ -52,11 +67,13 @@ const typeDefs = gql`
     }
 
     type Query {
+        me: User
         user: User
         users: [User]
         workouts: [Workout]
+        exercises: [Exercise]
         record: Achievement
-        categories: Workout
+        categories: [Category]
     }
 
     type Mutation {
