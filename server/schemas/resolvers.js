@@ -63,14 +63,18 @@ const resolvers = {
     },
     addWorkout: async (parent, { workoutData }, context) => {
       console.log(context);
-      if (context.user) {
+      // if (context.user) {
+        console.log(workoutData);
+        const workout = await Workout.create(workoutData);
+        console.log(workout._id);
+
         const updatedUser = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { workouts: workoutData } },
+          { _id: '645c279e8a2ad58436853900' },
+          { $push: { workouts: workout._id } },
           { new: true }
         );
         return updatedUser;
-      }
+      // }
       throw new AuthenticationError("You need to be logged in!"); //if not logged in and trying to add workout, throw error message
     },
     removeWorkout: async (parent, { _id }, context) => {
