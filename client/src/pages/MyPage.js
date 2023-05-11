@@ -17,7 +17,8 @@ const MyPage = () => {
             <img src={profilePic} alt="Profile Pic" />
             <div>
                 <CategoryMenu /> {/* Showing exercise category for user's excersie list (categorized by target) */}
-                {/* <WorkoutList /> Showing exercise user's exercise list and option to remove (fetch user's data's 'workouts' and loop thru to display it along with the delete button(or share button)*/}
+                {/*  Showing exercise user's exercise list and option to remove (fetch user's data's 'workouts' and loop thru to display it along with the delete button(or share button)*/}
+                <WorkoutList />
                 {/* adding workout  */}
                 <Modal show={showModal} onHide={closeAddWorkoutModal}>
                     <Modal.Header closeButton>
