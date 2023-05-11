@@ -1,31 +1,45 @@
 .container {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  input[type="firstName"],
-  input[type="lastName"],
-  input[type="email"],
-  input[type="password"] {
-    display: block;
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  
-  button[type="submit"] {
-    background-color: #0077cc;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    border: none;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #0058a3;
-  }
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-control,
+#firstName,
+#lastName,
+#userName,
+#email,
+#pwd,
+#age,
+#weight,
+#height {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+
+button[type="submit"] {
+  background-color: #0077cc;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  border: none;
+}
+
+button[type="submit"]:hover {
+  background-color: #0058a3;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 20px;
+} 
