@@ -76,9 +76,10 @@ function Login(props) {
     </div>
 
     <div>
-          <h2>New User? <Link to="/signup">Signup here!</Link></h2>
-    </div>
-    </div>
+    <h2 className="signup-link">New User? <Link to="/signup">Signup here!</Link></h2>
+  </div>
+</div>
+
     
   );
 }
