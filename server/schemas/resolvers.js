@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Workout, Achievement } = require("../models");
+const { User, Workout, Achievement, Exercise } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -29,6 +29,9 @@ const resolvers = {
     workouts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Workout.find(params).sort({ createdAt: -1 });
+    },
+    exercises: async (parent, { exercises }) => {
+      return Exercise.find(exercises);
     },
     record: async (parent, { record }) => {
       return Achievement.find(record);
@@ -63,14 +66,18 @@ const resolvers = {
     },
     addWorkout: async (parent, { workoutData }, context) => {
       console.log(context);
-      if (context.user) {
+      // if (context.user) {
+        console.log(workoutData);
+        const workout = await Workout.create(workoutData);
+        console.log(workout._id);
+
         const updatedUser = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { workouts: workoutData } },
+          { _id: '645c279e8a2ad58436853900' },
+          { $push: { workouts: workout._id } },
           { new: true }
         );
         return updatedUser;
-      }
+      // }
       throw new AuthenticationError("You need to be logged in!"); //if not logged in and trying to add workout, throw error message
     },
     removeWorkout: async (parent, { _id }, context) => {
