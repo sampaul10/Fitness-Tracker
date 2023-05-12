@@ -31,28 +31,30 @@ const MyPage = () => {
         <div>
             <h2 className="section-header">My Page</h2>
             <img src={profilePic} alt="Profile Pic" />
-            <h3>Welcome! {userData.firstName}</h3>
-            <ul>
-                <li>Age: {userData.age}</li>
-                <li>Height: {userData.height} cm</li>
-                <li>Weight: {userData.weight} kg</li>
-            </ul>
+            <div className="welcome-user">
+                <h3 className="welcome">Welcome {userData.firstName}!</h3>
+                <ul className="profile">
+                    <li>Age: {userData.age}</li>
+                    <li>Height: {userData.height} cm</li>
+                    <li>Weight: {userData.weight} kg</li>
+                </ul>
 
-            {/* Updating Profile  */}
-            <div>
-                <Modal show={showProfileModal} onHide={closeProfile}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Update Profile</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        {/* Render updateProfileForm component when modal is opened*/}
-                        <UpdateProfileForm />
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button onClick={closeProfile}>Close</Button>
-                    </Modal.Footer>
-                </Modal>
-                <Button className="show-add-workout-modal" onClick={showProfile}>Update Profile</Button>
+                {/* Updating Profile  */}
+                <div>
+                    <Modal show={showProfileModal} onHide={closeProfile}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Update Profile</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            {/* Render updateProfileForm component when modal is opened*/}
+                            <UpdateProfileForm />
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={closeProfile}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
+                    <Button className="show-add-workout-modal update-profile" onClick={showProfile}>Update Profile</Button>
+                </div>
             </div>
 
             <div className="add-workout">

@@ -8,7 +8,7 @@ body {
   .section-header {
     border-radius: 10px;
     padding: 10px;
-    background-color: #0099ff;
+    background-color: #7C0902;
     color: #fff;
   }
   
@@ -41,6 +41,8 @@ body {
     border-radius: 10px;
     color: #fff;
   }
+
+  
   
   /* Style button to add workout */
   .Button {
@@ -110,15 +112,20 @@ body {
     margin: 0 auto;
     max-width: 100%;
   }
+
+  .category-choose {
+    margin: 1% 0;
+  }
   
   .category-menu {
     margin-bottom: 20px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
   }
   
   .category-menu button {
-    background-color: blue;
+    background-color: #7C0902;
     border-radius: 10px;
     border: none;
     color: white;
@@ -138,11 +145,36 @@ body {
     align-content: center;
     align-items: center;
   }
-  
-  .show-add-workout-modal {
-    width: 200px;
+
+  .btn-primary {
+    margin: 2% 0;
+    --bs-btn-color: #F4F0EC !important;
+    --bs-btn-bg: #B22222 !important;
+    --bs-btn-border-color: #B22222 !important;
+
+    --bs-btn-hover-bg: #FFBA00 !important;
+    --bs-btn-hover-border-color: #FFBA00 !important;
+
+    --bs-btn-active-bg: #7C0902 !important;
+    --bs-btn-active-border-color: #7C0902 !important; 
+    --bs-btn-disabled-bg: #7C0902 !important;
+    --bs-btn-disabled-border-color: #7C0902 !important;
   }
 
+  .show-add-workout-modal {
+    font-weight: bold !important;
+    font-size: 1.5rem !important;
+    height: 6rem;
+    width: 200px;
+    --bs-btn-color: #B22222 !important;
+    --bs-btn-bg: #FFCC33 !important;
+    --bs-btn-border-color: #FFCC33 !important;
+
+    --bs-btn-hover-color: #FFCC33 !important;
+    --bs-btn-hover-bg: #8B0000 !important;
+    --bs-btn-hover-border-color: #8B0000 !important;
+
+  }
 
   /*.add-workout-btn {
     background-color: blue;
@@ -162,4 +194,37 @@ body {
   
   .add-workout-btn:hover {
     background-color: green;
+  }
+
+  .welcome {
+
+    font-size: 3.5rem;
+    font-weight: bold;
+  }
+
+  .welcome-user {
+    margin: 1% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .update-profile {
+    font-weight: bold !important;
+    font-size: 1.3rem !important;
+    height: 3rem;
+    width: 250px;
+  }
+
+  .profile {
+    text-align: center;
+    border: 5px solid #B22222;
+    padding: 0.8rem;
+  }
+
+  .profile li{
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 1.2rem ;
+    color: #B22222;
   }
