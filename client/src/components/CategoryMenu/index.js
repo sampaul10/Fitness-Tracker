@@ -34,10 +34,10 @@ function CategoryMenu() {
       }
     }, [data, loading, dispatch]);
   
-    const handleClick = (id) => {
+    const handleClick = (target) => {
       dispatch({
         type: UPDATE_CURRENT_CATEGORY,
-        currentCategory: id,
+        currentCategory: target,
       });
     };
 
@@ -49,7 +49,7 @@ function CategoryMenu() {
           <button
             key={item._id}
             onClick={() => {
-              handleClick(item._id);
+              handleClick(item.target);
             }}
           >
             {item.target}

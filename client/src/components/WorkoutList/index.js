@@ -5,7 +5,6 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_WORKOUTS } from "../../utils/actions";
 import { idbPromise } from '../../utils/helpers';
 import { Modal, Button } from "react-bootstrap";
-import { REMOVE_WORKOUT } from "../../utils/mutations";
 import { removeWorkoutId } from "../../utils/localStorage";
 import WorkoutDetail from "../WorkoutDetail";
 import Auth from "../../utils/auth";
@@ -22,18 +21,20 @@ function WorkoutList() {
   const { currentCategory } = state;
   const { loading, data } = useQuery(GET_ME);
 
-  const [removeWorkout] = useMutation(REMOVE_WORKOUT);
 
   const userData = data?.me || {};
 
-  /*useEffect(() => {
-    if (userData) {
+  console.log(userData);
+  console.log(userData.workouts);
+
+  useEffect(() => {
+    if (userData.workouts) {
       dispatch({
         type: UPDATE_WORKOUTS,
         workouts: userData.workouts,
       });
       userData.workouts.forEach((workout) => {
-        console.log(workout);
+        //console.log(workout);
         idbPromise('workouts', 'put', workout);
       });
     } else if (!loading) {
@@ -45,36 +46,37 @@ function WorkoutList() {
         });
       });
     }
-  }, [userData, loading, dispatch]);*/
+  }, [userData.workouts, loading, dispatch]);
 
+  // refresh the workout list or fetch the updated data
   const handleCloseWorkoutDetail = () => {
     closeAddWorkoutModal();
     setSelectedWorkout(null)
-    // refresh the workout list or fetch the updated data
   }
 
   function filterWorkouts() {
+    console.log(currentCategory);
     if (!currentCategory) {
       return state.workouts;
     }
 
     return state.workouts.filter(
-      (workout) => workout.category._id === currentCategory
+      (workout) => workout.target === currentCategory
     );
-  }
-
-  if (loading) {
-    return <h2>LOADING Workout List...</h2>;
   }
 
   const handleWorkoutClick = (workout) => {
     setSelectedWorkout(workout);
   };
 
+  if (loading) {
+    return <h2>LOADING Workout List...</h2>;
+  }
+
   return (
     <>
       <div>
-        {userData.workouts?.map((workout) => (
+        {filterWorkouts()?.map((workout) => (
           <div key={workout._id}>
             <Button onClick={() => handleWorkoutClick(workout)}>{workout.name}</Button>
           </div>
