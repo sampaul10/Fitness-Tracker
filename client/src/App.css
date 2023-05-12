@@ -52,10 +52,12 @@
   background-color: #007bff;
 }
 
-.btn-outline-primary {
+
+/*.btn-outline-primary {
   color: #007bff;
   border-color: #007bff;
 }
+*/
 
 .btn-outline-primary:hover {
   background-color: #007bff;
@@ -63,3 +65,4 @@
 }
 
 /* End Nav Styling */
+

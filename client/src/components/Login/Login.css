@@ -52,3 +52,6 @@
     margin-top: 20px;
     }
 
+.image{
+  background-image: url("../../assets/images/profile-pic.png");
+}

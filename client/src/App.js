@@ -15,7 +15,8 @@ import Nav from './components/Nav';
 import Timer from './components/Timer/Timer';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
-import MyPage from './pages/MyPage';
+import MyPage from './pages/MyPage/MyPage';
+import { StoreProvider } from './utils/GlobalState';
 //import './App.css';   // from login tutorial
 
 // Construct our main GraphQL API endpoint
@@ -50,36 +51,38 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <>
-          <Nav />
-          <Routes>
-            <Route
-              path='/'
-              element={<Dashboard />}
-            />
-            <Route
-              path='/login'
-              element={<Login />}
-            />
-                        <Route
-              path='/signup'
-              element={<Signup />}
-            />
-            <Route
-              path='/mypage'
-              element={<MyPage />}
-            />
-            <Route
-              path='/timer'
-              element={<Timer />}
-            />
-            <Route
-              path='*'
-              element={<h1 className='display-2'>Wrong page!</h1>}
-            />
-          </Routes>
-          <Footer />
-        </>
+        <StoreProvider>
+          <>
+            <Nav />
+            <Routes>
+              <Route
+                path='/'
+                element={<Dashboard />}
+              />
+              <Route
+                path='/login'
+                element={<Login />}
+              />
+              <Route
+                path='/signup'
+                element={<Signup />}
+              />
+              <Route
+                path='/mypage'
+                element={<MyPage />}
+              />
+              <Route
+                path='/timer'
+                element={<Timer />}
+              />
+              <Route
+                path='*'
+                element={<h1 className='display-2'>Wrong page!</h1>}
+              />
+            </Routes>
+            <Footer />
+          </>
+        </StoreProvider>
       </Router>
     </ApolloProvider>
   );
