@@ -20,7 +20,7 @@ const Footer = () => {
         
         <footer className="footer">
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
       <Card.Body>
         <Card.Title>Nike Running</Card.Title>
         <Card.Text>
@@ -32,7 +32,7 @@ const Footer = () => {
     </Card>
 
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
       <Card.Body>
         <Card.Title>Nike Running</Card.Title>
         <Card.Text>
