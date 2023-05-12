@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 const Dashboard = () => {
 
     return (
-        <div>
+        <div className="dashpic">
             <header className="header">
                 <h1>U-Fit</h1>
             </header>
