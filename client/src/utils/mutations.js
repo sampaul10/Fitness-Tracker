@@ -90,6 +90,21 @@ export const ADD_USER = gql`
     }
 `;
 
+export const UPDATE_USER = gql`
+    mutation updateUser($age: Int!, $weight: Float!, $height: Float!){
+        updateUser(age: $age, weight: $weight, height: $height){
+            _id
+            firstName
+            lastName
+            userName
+            email
+            age
+            weight
+            height
+        }
+    }
+`;
+
 export const ADD_WORKOUT = gql`
     mutation addWorkout($workoutInput: WorkoutInput) {
         addWorkout(workoutInput: $workoutInput) {

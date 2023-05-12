@@ -32,7 +32,7 @@ const WorkoutDetail = (props) => {
     return (
         <div>
             <h2>Workout: [{props.workout.name}]</h2>
-            <img src={props.workout.gifUrl}></img>
+            <img src={props.workout.gifUrl} alt="workout gif preview"></img>
             <ul>
                 <li>Body Part: {props.workout.bodyPart}</li>
                 <li>Equipment: {props.workout.equipment}</li>

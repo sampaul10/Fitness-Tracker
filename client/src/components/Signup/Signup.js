@@ -114,7 +114,7 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="weight">Weight:</label>
+          <label htmlFor="weight">Weight (kg):</label>
           <input
             placeholder="weight"
             name="weight"
@@ -122,10 +122,9 @@ function Signup(props) {
             id="weight"
             onChange={handleChange}
           />
-           lbs
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="height">Height:</label>
+          <label htmlFor="height">Height (cm):</label>
           <input
             placeholder="height"
             name="height"
@@ -133,7 +132,6 @@ function Signup(props) {
             id="height"
             onChange={handleChange}
           />
-           ft
         </div>
         <div className="flex-row flex-end">
           <button type="submit">Submit</button>
