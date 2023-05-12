@@ -7,6 +7,7 @@ import {
 } from '../../utils/actions';
 import { QUERY_CATEGORIES } from '../../utils/queries'; //query categories or query targets from workout workout.find().distinct('target', function(error, ids))
 import { idbPromise } from '../../utils/helpers';
+import './category.css';
 
 
 function CategoryMenu() {
@@ -41,8 +42,9 @@ function CategoryMenu() {
     };
 
     return (
-      <div>
-        <h2>Choose a Excercise Category:</h2>
+      <div class="category-choose">
+        <h2>Choose an Excercise Category:</h2>
+        <div class="category-menu">
         {categories.map((item) => (
           <button
             key={item._id}
@@ -53,6 +55,7 @@ function CategoryMenu() {
             {item.target}
           </button>
         ))}
+        </div>
       </div>
     );
 }

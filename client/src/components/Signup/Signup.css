@@ -1,4 +1,6 @@
-.container {
+
+ .container {
+
   max-width: 600px;
   margin: 0 auto;
 }
@@ -43,3 +45,4 @@ button[type="submit"]:hover {
   text-align: center;
   margin-top: 20px;
 } 
+

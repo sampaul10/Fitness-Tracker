@@ -15,7 +15,7 @@ import Nav from './components/Nav';
 import Timer from './components/Timer';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
-import MyPage from './pages/MyPage';
+import MyPage from './pages/MyPage/MyPage';
 import { StoreProvider } from './utils/GlobalState';
 //import './App.css';   // from login tutorial
 
