@@ -3,10 +3,13 @@ import { Button } from "react-bootstrap";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from '../../utils/auth';
 import { REMOVE_WORKOUT } from '../../utils/mutations';
+import { GET_ME } from '../../utils/queries'
 
 const WorkoutDetail = (props) => {
     //console.log(props.workout.name);
-    const [removeWorkout, { error }] = useMutation(REMOVE_WORKOUT);
+    const [removeWorkout, { error }] = useMutation(REMOVE_WORKOUT, {
+        refetchQueries: [{ query: GET_ME }]
+      });
 
     const handleRemoveWorkout = async (id) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -19,6 +22,7 @@ const WorkoutDetail = (props) => {
             await removeWorkout({
                 variables: { _id: id },
             });
+            props.onClose();
         } catch (err) {
             console.error(err)
         }

@@ -96,6 +96,8 @@ const resolvers = {
           { new: true }
         );
 
+        await Workout.findOneAndDelete({ _id: _id });
+
         return updatedUser;
       }
       throw new AuthenticationError('You need to be logged in!');

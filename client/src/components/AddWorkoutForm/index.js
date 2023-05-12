@@ -51,7 +51,7 @@ const AddWorkoutForm = () => {
             variables: { workoutInput: { ...updatedWorkoutData } },
           });
           console.log("Created workout: ", savedWorkout);
-          console.log("workoutformData: ", updatedWorkoutData);
+          //console.log("workoutformData: ", updatedWorkoutData);
 
           setWorkoutFormData({
             _id: "",
@@ -140,11 +140,11 @@ const AddWorkoutForm = () => {
                         value={workoutFormData.time || ''}
                     ></Form.Control>
 
-                    <Form.Label>Enter Disatnce (if Applicable) (meters):</Form.Label>
+                    <Form.Label>Enter Disatnce (if Applicable) (miles):</Form.Label>
                     <Form.Control
                         type="text"
                         name="distance"
-                        placeholder="Ex: 100 m"
+                        placeholder="Ex: 100 miles"
                         onChange={handleInputChange}
                         value={workoutFormData.distance || 0}
                     ></Form.Control>

@@ -47,6 +47,12 @@ function WorkoutList() {
     }
   }, [userData, loading, dispatch]);*/
 
+  const handleCloseWorkoutDetail = () => {
+    closeAddWorkoutModal();
+    setSelectedWorkout(null)
+    // refresh the workout list or fetch the updated data
+  }
+
   function filterWorkouts() {
     if (!currentCategory) {
       return state.workouts;
@@ -79,7 +85,7 @@ function WorkoutList() {
           <Modal.Title>Workout Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {selectedWorkout && <WorkoutDetail workout={selectedWorkout} />}
+          {selectedWorkout && <WorkoutDetail workout={selectedWorkout} onClose={handleCloseWorkoutDetail} />}
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => setSelectedWorkout(null)}>Close</Button>

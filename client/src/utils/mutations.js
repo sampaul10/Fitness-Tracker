@@ -133,9 +133,9 @@ export const ADD_WORKOUT = gql`
 `;
 
 export const REMOVE_WORKOUT = gql`
-mutation removeWorkout($_id: ID){
+mutation removeWorkout($_id: ID!){
     removeWorkout(_id: $_id){
-        user {
+        
             _id
             firstName
             lastName
@@ -155,7 +155,7 @@ mutation removeWorkout($_id: ID){
                 time
                 distance
                 }
-            }
+            
     }
 }
 `;
