@@ -90,6 +90,21 @@ export const ADD_USER = gql`
     }
 `;
 
+export const UPDATE_USER = gql`
+    mutation updateUser($age: Int!, $weight: Float!, $height: Float!){
+        updateUser(age: $age, weight: $weight, height: $height){
+            _id
+            firstName
+            lastName
+            userName
+            email
+            age
+            weight
+            height
+        }
+    }
+`;
+
 export const ADD_WORKOUT = gql`
     mutation addWorkout($workoutInput: WorkoutInput) {
         addWorkout(workoutInput: $workoutInput) {
@@ -133,9 +148,9 @@ export const ADD_WORKOUT = gql`
 `;
 
 export const REMOVE_WORKOUT = gql`
-mutation removeWorkout($_id: ID){
+mutation removeWorkout($_id: ID!){
     removeWorkout(_id: $_id){
-        user {
+        
             _id
             firstName
             lastName
@@ -155,7 +170,7 @@ mutation removeWorkout($_id: ID){
                 time
                 distance
                 }
-            }
+            
     }
 }
 `;

@@ -34,22 +34,22 @@ function CategoryMenu() {
       }
     }, [data, loading, dispatch]);
   
-    const handleClick = (id) => {
+    const handleClick = (target) => {
       dispatch({
         type: UPDATE_CURRENT_CATEGORY,
-        currentCategory: id,
+        currentCategory: target,
       });
     };
 
     return (
-      <div class="category-choose">
+      <div className="category-choose">
         <h2>Choose an Excercise Category:</h2>
-        <div class="category-menu">
+        <div className="category-menu">
         {categories.map((item) => (
           <button
             key={item._id}
             onClick={() => {
-              handleClick(item._id);
+              handleClick(item.target);
             }}
           >
             {item.target}

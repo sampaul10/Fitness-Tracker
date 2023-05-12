@@ -66,6 +66,25 @@ const resolvers = {
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
     },
+
+    updateUser: async (parent, { age, weight, height }, context) => {
+      if(context.user){
+        const updatedAge = parseInt(age);
+        const updatedWeight = parseFloat(weight);
+        const updatedHeight= parseFloat(height);
+
+        const updatedUser = await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { age: updatedAge, weight: updatedWeight, height: updatedHeight },
+            { new: true}
+        );
+        console.log("updated data: ", age, weight, height);
+        console.log(updatedUser);
+        return updatedUser;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
     addWorkout: async (parent, { workoutInput }, context) => {
       //console.log(context);
       if (context.user) {
@@ -95,6 +114,8 @@ const resolvers = {
           { $pull: { workouts: _id } },
           { new: true }
         );
+
+        await Workout.findOneAndDelete({ _id: _id });
 
         return updatedUser;
       }

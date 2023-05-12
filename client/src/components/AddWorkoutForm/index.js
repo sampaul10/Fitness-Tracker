@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useQuery, useMutation } from "@apollo/client";
 import { ADD_WORKOUT } from "../../utils/mutations";
 import { GET_EXERCISES } from '../../utils/queries';
 import Auth from "../../utils/auth";
+import { saveWorkoutIds, getSavedWorkoutIds } from "../../utils/localStorage";
 
 //handle addworkout form submit
 //user should have drop down list for the workout data that is pre-seeded
@@ -24,17 +25,21 @@ const AddWorkoutForm = () => {
 
     const { loading, data } = useQuery(GET_EXERCISES); //get all of the workouts data
 
+    const [savedWorkoutIds, setSavedWorkoutIds] = useState(getSavedWorkoutIds());
     const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
 
+    useEffect(() => {
+      return () => saveWorkoutIds(savedWorkoutIds);
+    });
 
-    const handleFormSubmit = async (event) => {
+    const handleFormSubmit = async () => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
             return false;
         }
 
-        event.preventDefault();
+        //event.preventDefault();
 
         const { _id, ...workoutInput } = workoutFormData;
         
@@ -51,7 +56,7 @@ const AddWorkoutForm = () => {
             variables: { workoutInput: { ...updatedWorkoutData } },
           });
           console.log("Created workout: ", savedWorkout);
-          console.log("workoutformData: ", updatedWorkoutData);
+          //console.log("workoutformData: ", updatedWorkoutData);
 
           setWorkoutFormData({
             _id: "",
@@ -65,6 +70,7 @@ const AddWorkoutForm = () => {
             distance: 0,
           });
 
+          setSavedWorkoutIds([...savedWorkoutIds, workoutFormData._id]);
         } catch (err) {
           console.log(err);
         }
@@ -115,12 +121,11 @@ const AddWorkoutForm = () => {
                         <option value="">Select a workout</option>
                         {data.exercises.map((workout) => (
                             <option key={workout._id} value={workout._id}>
-                                {workout.name}
+                                {workout.name} | TARGET: {workout.target}
                             </option>
                         ))}
-
                     </Form.Control>
-
+                    {workoutFormData.gifUrl && <img src={workoutFormData.gifUrl} alt="workout gif preview" />}
                     <Form.Label>Enter Repetition (if Applicable):</Form.Label>
                     <Form.Control
                         type="text"
@@ -140,11 +145,11 @@ const AddWorkoutForm = () => {
                         value={workoutFormData.time || ''}
                     ></Form.Control>
 
-                    <Form.Label>Enter Disatnce (if Applicable) (meters):</Form.Label>
+                    <Form.Label>Enter Disatnce (if Applicable) (miles):</Form.Label>
                     <Form.Control
                         type="text"
                         name="distance"
-                        placeholder="Ex: 100 m"
+                        placeholder="Ex: 100 miles"
                         onChange={handleInputChange}
                         value={workoutFormData.distance || 0}
                     ></Form.Control>
