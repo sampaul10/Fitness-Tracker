@@ -29,7 +29,7 @@ module.exports = {
   },
   signToken: function ({ firstName, email, _id }) {
     const payload = { firstName, email, _id };
-    console.log(secret);
+    //console.log(secret);
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };
