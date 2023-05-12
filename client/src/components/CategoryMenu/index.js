@@ -42,9 +42,9 @@ function CategoryMenu() {
     };
 
     return (
-      <div class="category-choose">
+      <div className="category-choose">
         <h2>Choose an Excercise Category:</h2>
-        <div class="category-menu">
+        <div className="category-menu">
         {categories.map((item) => (
           <button
             key={item._id}

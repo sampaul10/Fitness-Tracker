@@ -27,14 +27,14 @@ const AddWorkoutForm = () => {
     const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
 
 
-    const handleFormSubmit = async (event) => {
+    const handleFormSubmit = async () => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
             return false;
         }
 
-        event.preventDefault();
+        //event.preventDefault();
 
         const { _id, ...workoutInput } = workoutFormData;
         

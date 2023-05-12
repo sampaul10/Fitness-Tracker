@@ -4,13 +4,20 @@ import { GET_ME } from "../../utils/queries";
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_WORKOUTS } from "../../utils/actions";
 import { idbPromise } from '../../utils/helpers';
-import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { REMOVE_WORKOUT } from "../../utils/mutations";
 import { removeWorkoutId } from "../../utils/localStorage";
-import { AddWorkoutForm } from "../AddWorkoutForm";
+import WorkoutDetail from "../WorkoutDetail";
 import Auth from "../../utils/auth";
 
 function WorkoutList() {
+  const [showModal, setShowModal] = useState(false);
+
+  const showAddWorkoutModal = () => setShowModal(true); //show modal
+  const closeAddWorkoutModal = () => setShowModal(false); //hide modal
+  const [selectedWorkout, setSelectedWorkout] = useState(null);
+
+
   const [state, dispatch] = useStoreContext();
   const { currentCategory } = state;
   const { loading, data } = useQuery(GET_ME);
@@ -18,8 +25,6 @@ function WorkoutList() {
   const [removeWorkout] = useMutation(REMOVE_WORKOUT);
 
   const userData = data?.me || {};
-  console.log(userData);
-  console.log(data);
 
   /*useEffect(() => {
     if (userData) {
@@ -56,15 +61,30 @@ function WorkoutList() {
     return <h2>LOADING Workout List...</h2>;
   }
 
+  const handleWorkoutClick = (workout) => {
+    setSelectedWorkout(workout);
+  };
+
   return (
     <>
       <div>
-        {userData.workouts.map((workout) => (
-          <div key={workout._id} value={workout._id}>
-            {workout.name}
+        {userData.workouts?.map((workout) => (
+          <div key={workout._id}>
+            <Button onClick={() => handleWorkoutClick(workout)}>{workout.name}</Button>
           </div>
         ))}
       </div>
+      <Modal show={selectedWorkout} onHide={() => setSelectedWorkout(null)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Workout Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {selectedWorkout && <WorkoutDetail workout={selectedWorkout} />}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => setSelectedWorkout(null)}>Close</Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
