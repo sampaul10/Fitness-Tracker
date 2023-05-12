@@ -24,7 +24,7 @@ const WorkoutSchema = new Schema({
         default: 0,
     },
     time: {
-        type: Number, //?????? Which 
+        type: String, //?????? Which 
     },
     distance: { //ex: how much miles user has run
         type: Number,

@@ -30,8 +30,8 @@ function Signup(props) {
         email: formState.email,
         password: formState.password,
         age: parseInt(formState.age),
-        weight: parseInt(formState.weight),
-        height: parseInt(formState.height),
+        weight: parseFloat(formState.weight),
+        height: parseFloat(formState.height),
       },
     });
     console.log(mutationResponse);

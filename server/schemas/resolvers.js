@@ -66,12 +66,18 @@ const resolvers = {
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
     },
-    addWorkout: async (parent, { workoutData }, context) => {
+    addWorkout: async (parent, { workoutInput }, context) => {
       //console.log(context);
       if (context.user) {
-        //console.log(workoutData);
-        const workout = await Workout.create(workoutData);
-        //console.log(workout._id);
+        console.log(workoutInput);
+        const updatedWorkoutData = {
+          ...workoutInput,
+          repetition: parseInt(workoutInput.repetition),
+          distance: parseFloat(workoutInput.distance),
+        };
+        console.log(updatedWorkoutData);
+        const workout = await Workout.create(updatedWorkoutData);
+        console.log(workout._id);
 
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },

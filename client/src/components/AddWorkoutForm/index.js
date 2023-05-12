@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useQuery, useMutation } from "@apollo/client";
-import { GET_ME } from "../../utils/queries";
 import { ADD_WORKOUT } from "../../utils/mutations";
 import { GET_EXERCISES } from '../../utils/queries';
-import { saveWorkoutIds, getSavedWorkoutIds } from "../../utils/localStorage";
 import Auth from "../../utils/auth";
 
 //handle addworkout form submit
@@ -13,6 +11,7 @@ import Auth from "../../utils/auth";
 
 const AddWorkoutForm = () => {
     const [workoutFormData, setWorkoutFormData] = useState({
+        _id: "",
         name: "",
         bodyPart: "",
         equipment: "",
@@ -22,15 +21,11 @@ const AddWorkoutForm = () => {
         time: "",
         distance: 0,
       });
-    const [savedWorkoutIds, setSavedWorkoutIds] = useState(getSavedWorkoutIds);
 
     const { loading, data } = useQuery(GET_EXERCISES); //get all of the workouts data
-    //console.log(data);
+
     const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
 
-    useEffect(() => {
-        return () => saveWorkoutIds(savedWorkoutIds);
-    });
 
     const handleFormSubmit = async (event) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -40,16 +35,26 @@ const AddWorkoutForm = () => {
         }
 
         event.preventDefault();
-        console.log("workoutformData: ", workoutFormData);
+
+        const { _id, ...workoutInput } = workoutFormData;
+        
+        const updatedWorkoutData = {
+            ...workoutInput,
+            repetition: parseInt(workoutInput.repetition),
+            distance: parseFloat(workoutInput.distance),
+          };
+        console.log("workoutformData: ", updatedWorkoutData);
+
         try {
+
           const savedWorkout = await addWorkout({
-            variables: { workoutInput: { ...workoutFormData } },
+            variables: { workoutInput: { ...updatedWorkoutData } },
           });
           console.log("Created workout: ", savedWorkout);
-
-          setSavedWorkoutIds([...savedWorkoutIds, savedWorkout.data.addWorkout._id])
+          console.log("workoutformData: ", updatedWorkoutData);
 
           setWorkoutFormData({
+            _id: "",
             name: "",
             bodyPart: "",
             equipment: "",
@@ -74,6 +79,7 @@ const AddWorkoutForm = () => {
           );
 
           setWorkoutFormData({
+            _id: selectedWorkout._id,
             name: selectedWorkout.name,
             bodyPart: selectedWorkout.bodyPart,
             equipment: selectedWorkout.equipment,
