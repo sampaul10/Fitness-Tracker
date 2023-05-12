@@ -12,7 +12,7 @@ import Dashboard from './pages/Dashboard'; // from login tutorial
 import Footer from './components/Footer'
 import Preferences from './components/Preferences/Preferences';
 import Nav from './components/Nav';
-import Timer from './components/Timer';
+import Timer from './components/Timer/Timer';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import MyPage from './pages/MyPage/MyPage';
