@@ -71,3 +71,11 @@ label {
   flex-direction: column;
   padding: 2%;
 }
+
+.login-button {
+  background-color: #B31B1B !important;
+}
+
+.login-button:hover {
+  background-color: #7C0902 !important;
+}

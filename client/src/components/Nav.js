@@ -18,9 +18,24 @@ const Nav = () => {
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
         <Link to="/" className="navbar-brand">U-Fit</Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        {/* Navbar turns into menu icon in smaller page */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          onClick={() => {
+            const navbarNav = document.getElementById('navbarNav');
+            navbarNav.classList.toggle('show');
+          }}
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
+
+
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}>

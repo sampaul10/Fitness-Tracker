@@ -1,6 +1,6 @@
 /*.dashpic {
   /*background-image: url("../assets/images/dumb-bell.png");*/
-  /*background-image: linear-gradient(to bottom right, #7C0902, #FFCC33);}
+/*background-image: linear-gradient(to bottom right, #7C0902, #FFCC33);}
 */
 
 :root {
@@ -42,12 +42,27 @@
   mix-blend-mode: multiply;
 }
 
+/*https://codepen.io/robb0wen/pen/KKoVOrq*/
+
 .gold {
   background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
 }
+
 /*http://www.brandgradients.com/gold-gradient/*/
 
 .u-fit {
   text-align: center;
   padding: 1%;
+}
+
+.dashboard-img {
+  margin: 1%;
+  height: 50%;
+  width: 50%;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

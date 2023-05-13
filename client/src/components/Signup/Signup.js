@@ -7,7 +7,7 @@ import './Signup.css';
 
 function Signup(props) {
 
-  const [formState, setFormState] = useState({ 
+  const [formState, setFormState] = useState({
     firstName: '',
     lastName: '',
     userName: '',
@@ -16,9 +16,9 @@ function Signup(props) {
     age: 0,
     weight: 0,
     height: 0,
-});
+  });
   const [addUser, { error }] = useMutation(ADD_USER);
-    console.log(error);
+  console.log(error);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -49,94 +49,97 @@ function Signup(props) {
 
   return (
     <div className="container my-1">
-      <Link to="/login">← Go to Login</Link>
+      
+      <div className='signup-container'>
+      <Link to="/login" className="goto-login">← Go to Login</Link>
+        <h2>Signup</h2>
+        <form onSubmit={handleFormSubmit}>
+          <div className="flex-row space-between my-2">
+            <label htmlFor="firstName">First Name:</label>
+            <input
+              placeholder="First"
+              name="firstName"
+              type="text"
+              id="firstName"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex-row space-between my-2">
+            <label htmlFor="lastName">Last Name:</label>
+            <input
+              placeholder="Last"
+              name="lastName"
+              type="text"
+              id="lastName"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex-row space-between my-2">
+            <label htmlFor="userName">Username:</label>
+            <input
+              placeholder="Username"
+              name="userName"
+              type="username"
+              id="userName"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex-row space-between my-2">
+            <label htmlFor="email">Email:</label>
+            <input
+              placeholder="youremail@test.com"
+              name="email"
+              type="email"
+              id="email"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex-row space-between my-2">
+            <label htmlFor="pwd">Password:</label>
+            <input
+              placeholder="******"
+              name="password"
+              type="password"
+              id="pwd"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex-row space-between my-2">
+            <label htmlFor="age">Age:</label>
+            <input
+              placeholder="Age"
+              name="age"
+              type="number"
+              id="age"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex-row space-between my-2">
+            <label htmlFor="weight">Weight (kg):</label>
+            <input
+              placeholder="Weight"
+              name="weight"
+              type="number"
+              id="weight"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex-row space-between my-2">
+            <label htmlFor="height">Height (cm):</label>
+            <input
+              placeholder="Height"
+              name="height"
+              type="number"
+              id="height"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex-row flex-end">
+            <button type="submit" className="signup-submit" >Submit</button>
+          </div>
+        </form>
+      </div>
 
-      <h2>Signup</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            placeholder="First"
-            name="firstName"
-            type="text"
-            id="firstName"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            placeholder="Last"
-            name="lastName"
-            type="text"
-            id="lastName"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="userName">Username:</label>
-          <input
-            placeholder="Username"
-            name="userName"
-            type="username"
-            id="userName"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email:</label>
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="age">Age:</label>
-          <input
-            placeholder="Age"
-            name="age"
-            type="number"
-            id="age"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="weight">Weight (kg):</label>
-          <input
-            placeholder="weight"
-            name="weight"
-            type="number"
-            id="weight"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="height">Height (cm):</label>
-          <input
-            placeholder="height"
-            name="height"
-            type="number"
-            id="height"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
     </div>
   );
 }
