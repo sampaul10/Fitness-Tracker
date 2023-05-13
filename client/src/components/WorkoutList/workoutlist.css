@@ -1,0 +1,9 @@
+.close-detail {
+    --bs-btn-color: #B22222!important;
+    --bs-btn-bg: #FFCC33 !important;
+    --bs-btn-border-color: #FFCC33 !important;
+
+    --bs-btn-hover-color: #FFCC33 !important;
+    --bs-btn-hover-bg: green !important;
+    --bs-btn-hover-border-color: green !important;
+  }
