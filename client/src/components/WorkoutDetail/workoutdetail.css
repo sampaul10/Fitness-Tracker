@@ -1,0 +1,8 @@
+.delete-workout {
+    font-weight: bold !important;
+}
+
+.delete-workout:hover {
+    background-color: #4e1313 !important;
+    color: #FFCC33 !important;
+}

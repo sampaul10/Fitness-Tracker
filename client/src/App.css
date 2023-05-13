@@ -38,30 +38,56 @@
 }
 
 /* Nav Styling */
+.navbar-nav {
+  display: flex;
+}
+
+.navbar-nav li {
+  margin: auto;
+}
+
+.navbar {
+  background-color: #7C0902 !important;
+  --bs-navbar-hover-color: #FFCC33 !important;
+}
 
 .navbar-brand {
   font-weight: bold;
+  color: white !important;
 }
 
 .navbar-nav .nav-link{
-  color: black;
+  color: white;
 }
 
 .navbar-nav .active .nav-link {
-  color: white;
-  background-color: #007bff;
+  color: #B31B1B;
+  background-color: #FFCC33;
 }
 
-
-/*.btn-outline-primary {
-  color: #007bff;
-  border-color: #007bff;
+.btn-outline-primary {
+  color: #FFCC33 !important;
+  border-color: #FFCC33 !important;
 }
-*/
 
 .btn-outline-primary:hover {
-  background-color: #007bff;
+  background-color: green !important;
   color: white;
+}
+
+body{
+  background-color: #F5F5F5 !important;
+}
+
+.footer{
+  background-color: #7C0902;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.card {
+  margin: 1%;
 }
 
 /* End Nav Styling */

@@ -3,6 +3,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { UPDATE_USER } from "../../utils/mutations";
 import { GET_ME } from "../../utils/queries";
 import Auth from "../../utils/auth";
+import './updateprofileform.css'
 
 const UpdateProfileForm = () => {
     const { data, loading } = useQuery(GET_ME);
@@ -87,7 +88,7 @@ const UpdateProfileForm = () => {
                     />
                 </div>
                 <div className="flex-row flex-end">
-                    <button type="submit">Submit</button>
+                    <button className="submit-button" type="submit">Submit</button>
                 </div>
             </form>
         </div>

@@ -4,6 +4,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import Auth from '../../utils/auth';
 import { REMOVE_WORKOUT } from '../../utils/mutations';
 import { GET_ME } from '../../utils/queries'
+import './workoutdetail.css'
 
 const WorkoutDetail = (props) => {
     //console.log(props.workout.name);
@@ -41,7 +42,7 @@ const WorkoutDetail = (props) => {
                 <li>Time: {props.workout.time}</li>
                 <li>Distance: {props.workout.distance}</li>
             </ul>
-            <Button className='btn-block btn-danger' onClick={() => handleRemoveWorkout(props.workout._id)}>
+            <Button className='btn-block btn-danger delete-workout' onClick={() => handleRemoveWorkout(props.workout._id)}>
                 Delete Workout
             </Button>
         </div>

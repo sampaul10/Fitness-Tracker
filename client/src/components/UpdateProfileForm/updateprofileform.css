@@ -1,0 +1,10 @@
+.submit-button {
+    font-weight: bold;
+    color: #8B0000 !important;
+    background-color: #FFCC33 !important;
+}
+
+.submit-button:hover {
+    color: #FFCC33 !important;
+    background-color: green !important;
+}
