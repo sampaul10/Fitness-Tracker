@@ -1,4 +1,15 @@
 .dashpic {
-    background-image: url("../../assets/images/dumb-bell.png")!important;
-    
-  };
+    /*background-image: url("../assets/images/dumb-bell.png");*/
+    background-image: linear-gradient(to bottom right, #7C0902, #FFCC33);
+}
+
+.u-fit {
+  color: white;
+  font-weight: bold;
+  padding: 1%;
+}
+
+h2 {
+  color: white;
+  padding: 1%;
+}
