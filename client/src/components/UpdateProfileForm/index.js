@@ -11,9 +11,9 @@ const UpdateProfileForm = () => {
     const userData = data?.me || {};
 
     const [profileFormData, setProfileFormData] = useState({
-        age: 0,
-        weight: 0,
-        height: 0,
+        age: userData.age,
+        weight: userData.weight,
+        height: userData.height,
     });
 
     const [updateUser, { error }] = useMutation(UPDATE_USER);
