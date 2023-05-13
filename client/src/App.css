@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -53,10 +54,15 @@
 
 .navbar-brand {
   font-weight: bold;
+  font-size: 2rem !important;
   color: white !important;
 }
 
-.navbar-nav .nav-link{
+.nav-link {
+  font-weight: bold !important;
+}
+
+.navbar-nav .nav-link {
   color: white;
 }
 
@@ -75,20 +81,78 @@
   color: white;
 }
 
-body{
+body {
   background-color: #F5F5F5 !important;
+
 }
 
-.footer{
+.footer {
   background-color: #7C0902;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
 }
 
 .card {
   margin: 1%;
 }
 
-/* End Nav Styling */
+.cardlink {
+  background-color: #FFCC33 !important;
+}
 
+.card-title{
+  text-align: center;
+}
+
+.cardlink-name {
+  color:#B31B1B;
+}
+
+.cardlink-name:hover{
+  color: green;
+}
+
+.card-image{
+  height: 120px;
+}
+
+.navbar-nav {
+  margin: 0 1%;
+}
+
+.nav-item {
+  font-size: 1.5rem !important;
+}
+
+.nav-link {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+/* End Nav Styling */
+.footer-header {
+  text-align: center;
+  color: white;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.training-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@media screen and (max-width: 991px) {
+  .navbar-nav li {
+    margin: 0;
+  }
+
+  .navbar-nav {
+    align-items: flex-end;
+  }
+
+  .nav-item {
+    font-size: 1.3rem !important;
+    border: 2px solid #FFCC33;
+    border-radius: 5px;
+  }
+}

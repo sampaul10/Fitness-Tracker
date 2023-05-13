@@ -43,7 +43,7 @@ const MyPage = () => {
                 <div>
                     <Modal show={showProfileModal} onHide={closeProfile}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Update Profile</Modal.Title>
+                            <Modal.Title>Update Your Profile</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             {/* Render updateProfileForm component when modal is opened*/}
@@ -60,6 +60,7 @@ const MyPage = () => {
             <div className="add-workout">
                 <CategoryMenu /> {/* Showing exercise category for user's excersie list (categorized by target) */}
                 {/*  Showing exercise user's exercise list and option to remove (fetch user's data's 'workouts' and loop thru to display it along with the delete button(or share button)*/}
+                <h2 className="user-workouts">Your Workouts: </h2>
                 <WorkoutList />
                 {/* adding workout  */}
                 <Modal show={showAddWorkoutModal} onHide={closeAddWorkout}>

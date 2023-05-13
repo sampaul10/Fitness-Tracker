@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const Workout = require('./Workout');
 const Achievement = require('./Achievement');
 
