@@ -43,7 +43,7 @@ const MyPage = () => {
                 <div>
                     <Modal show={showProfileModal} onHide={closeProfile}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Update Profile</Modal.Title>
+                            <Modal.Title>Update Your Profile</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             {/* Render updateProfileForm component when modal is opened*/}

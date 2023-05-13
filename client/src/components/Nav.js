@@ -32,8 +32,8 @@ const Nav = () => {
                 <li className={`nav-item ${location.pathname === '/mypage' ? 'active' : ''}`}>
                   <Link to="/mypage" className="nav-link">My Page</Link>
                 </li>
-                <li>
-                  <Link onClick={handleLogout} className="btn btn-outline-primary">Logout</Link>
+                <li className="nav-item">
+                  <Link onClick={handleLogout} className="nav-link">Logout</Link>
                 </li>
               </>
             ) : (

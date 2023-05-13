@@ -53,7 +53,12 @@
 
 .navbar-brand {
   font-weight: bold;
+  font-size: 2rem !important;
   color: white !important;
+}
+
+.nav-link{
+  font-weight: bold !important;
 }
 
 .navbar-nav .nav-link{
@@ -88,6 +93,19 @@ body{
 
 .card {
   margin: 1%;
+}
+
+.navbar-nav {
+  margin: 0 1%;
+}
+
+.nav-item {
+  font-size: 1.5rem !important;
+}
+
+.nav-link {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 
 /* End Nav Styling */

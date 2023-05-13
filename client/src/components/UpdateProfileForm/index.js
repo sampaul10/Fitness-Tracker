@@ -52,7 +52,6 @@ const UpdateProfileForm = () => {
     return (
 
         <div>
-            <h2>Update Your Profile</h2>
             <form onSubmit={handleFormSubmit}>
                 <div className="flex-row space-between my-2">
                     <label htmlFor="age">Age:</label>

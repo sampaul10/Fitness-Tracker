@@ -43,7 +43,7 @@ function CategoryMenu() {
 
     return (
       <div className="category-choose">
-        <h2>Choose an Excercise Category:</h2>
+        <h2 className="category-header">Choose an Excercise Category:</h2>
         <div className="category-menu">
         {categories.map((item) => (
           <button

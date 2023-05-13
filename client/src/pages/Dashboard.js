@@ -7,15 +7,14 @@ const Dashboard = () => {
 
     return (
         <div>
-            <div className="dashpic">
+            <div className="dashpic gold">
                 <header className="header">
-                    <h1 className="u-fit">Welcome to U-Fit!</h1>
+                    <h1 className="u-fit metal">
+                        Welcome to U-Fit! <span className="texture"></span> </h1>
                 </header>
-                <h2>Dashboard Page</h2>
-
             </div>
             <div>
-                <p>hello world!</p>
+                
             </div>
         </div>
 
