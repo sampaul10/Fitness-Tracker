@@ -1,0 +1,10 @@
+.add-button {
+    color: #B22222 !important;
+    background-color: #FFCC33 !important;
+    font-weight: bold;
+}
+
+.add-button:hover {
+    color: #FFCC33 !important;
+    background-color: green !important;
+}

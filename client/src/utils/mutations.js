@@ -106,7 +106,7 @@ export const UPDATE_USER = gql`
 `;
 
 export const ADD_WORKOUT = gql`
-    mutation addWorkout($workoutInput: WorkoutInput) {
+    mutation addWorkout($workoutInput: WorkoutInput!) {
         addWorkout(workoutInput: $workoutInput) {
         _id
         firstName

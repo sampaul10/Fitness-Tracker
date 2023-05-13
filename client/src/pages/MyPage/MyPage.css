@@ -146,6 +146,9 @@ body {
     align-items: center;
   }
 
+  /*setting button color for adding workout*/
+
+
   .btn-primary {
     margin: 2% 0;
     --bs-btn-color: #F4F0EC !important;
