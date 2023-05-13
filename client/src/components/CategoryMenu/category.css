@@ -17,7 +17,7 @@
     justify-content: space-between;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    gap: 1rem; /* adds space between buttons */
+    gap: 0.5rem; /* adds space between buttons */
   }
   
   .category-menu button {
