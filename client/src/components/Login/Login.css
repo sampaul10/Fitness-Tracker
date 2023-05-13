@@ -70,6 +70,7 @@ label {
   display: flex;
   flex-direction: column;
   padding: 2%;
+  min-height: 80vh;
 }
 
 .login-button {
@@ -79,3 +80,4 @@ label {
 .login-button:hover {
   background-color: #7C0902 !important;
 }
+
