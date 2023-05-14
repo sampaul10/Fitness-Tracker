@@ -40,7 +40,7 @@ U-Fit is an fitness tracker web application that helps the user to track their w
 * User has option to modify their profile, which includes their age, height, and weight.
     ![update-profile](./Assets/updateprofile.PNG)
 
-* User has option to see different timer on 'Timer' page.
+* Timer page provides user three different timers for their exercise(s) (20 sec, 30 sec, 1 min).
     ![timer-page](./Assets/timer.PNG)
 
 * User has access to both Dashboard and Timer with or without being logged in.
