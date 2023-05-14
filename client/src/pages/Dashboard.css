@@ -1,4 +1,71 @@
-.dashpic {
-    background-image: url("../../assets/images/dumb-bell.png")!important;
-    
-  };
+/*.dashpic {
+  /*background-image: url("../assets/images/dumb-bell.png");*/
+/*background-image: linear-gradient(to bottom right, #7C0902, #FFCC33);}
+*/
+.dashpic{
+  border: 6px solid #8B0000;
+}
+
+:root {
+  --metal-tex: url(https://images.unsplash.com/photo-1501166222995-ff31c7e93cef?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTcyMDc2NzU&ixlib=rb-1.2.1&q=80);
+}
+
+.metal {
+  position: relative;
+  color: transparent;
+  font-family: impact, sans-serif;
+  font-size: 600%;
+  letter-spacing: 0.05em;
+  background-image: var(--metal-tex);
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.texture,
+.texture::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.texture {
+  background-image: linear-gradient(to bottom, rgb(150, 37, 37), white 50%, red 65%, white);
+  background-attachment: fixed;
+  mix-blend-mode: color-dodge;
+}
+
+.texture::after {
+  content: '';
+  background-image: var(--metal-tex);
+  background-size: 40rem;
+  filter: saturate(0) brightness(0.6) contrast(4);
+  mix-blend-mode: multiply;
+}
+
+/*https://codepen.io/robb0wen/pen/KKoVOrq*/
+
+.gold {
+  background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+}
+
+/*http://www.brandgradients.com/gold-gradient/*/
+
+.u-fit {
+  text-align: center;
+  padding: 1%;
+}
+
+.dashboard-img {
+  margin: 1%;
+  height: 50%;
+  width: 50%;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

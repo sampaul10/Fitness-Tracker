@@ -3,6 +3,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { UPDATE_USER } from "../../utils/mutations";
 import { GET_ME } from "../../utils/queries";
 import Auth from "../../utils/auth";
+import './updateprofileform.css'
 
 const UpdateProfileForm = () => {
     const { data, loading } = useQuery(GET_ME);
@@ -10,9 +11,9 @@ const UpdateProfileForm = () => {
     const userData = data?.me || {};
 
     const [profileFormData, setProfileFormData] = useState({
-        age: 0,
-        weight: 0,
-        height: 0,
+        age: userData.age,
+        weight: userData.weight,
+        height: userData.height,
     });
 
     const [updateUser, { error }] = useMutation(UPDATE_USER);
@@ -51,7 +52,6 @@ const UpdateProfileForm = () => {
     return (
 
         <div>
-            <h2>Update Your Profile</h2>
             <form onSubmit={handleFormSubmit}>
                 <div className="flex-row space-between my-2">
                     <label htmlFor="age">Age:</label>
@@ -87,7 +87,7 @@ const UpdateProfileForm = () => {
                     />
                 </div>
                 <div className="flex-row flex-end">
-                    <button type="submit">Submit</button>
+                    <button className="submit-button" type="submit">Submit</button>
                 </div>
             </form>
         </div>

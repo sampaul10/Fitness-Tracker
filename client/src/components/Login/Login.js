@@ -38,49 +38,50 @@ function Login(props) {
   return (
     <div className="image">
       <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email address:</label>
-          <input
-            className="form-control"
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-            value={formState.email}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            className="form-control"
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-            value={formState.password}
-          />
-        </div>
-        {error ? (
-          <div>
-            <p className="error-text">The provided credentials are incorrect</p>
+        <h2>Login</h2>
+        <form onSubmit={handleFormSubmit}>
+          <div className="form-group">
+            <label htmlFor="email">Email address:</label>
+            <input
+              className="form-control"
+              placeholder="youremail@test.com"
+              name="email"
+              type="email"
+              id="email"
+              onChange={handleChange}
+              value={formState.email}
+            />
           </div>
-        ) : null}
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+          <div className="form-group">
+            <label htmlFor="pwd">Password:</label>
+            <input
+              className="form-control"
+              placeholder="******"
+              name="password"
+              type="password"
+              id="pwd"
+              onChange={handleChange}
+              value={formState.password}
+            />
+          </div>
+          {error ? (
+            <div>
+              <p className="error-text">The provided credentials are incorrect</p>
+            </div>
+          ) : null}
+          <button type="submit" className="btn btn-primary login-button">
+            Submit
+          </button>
+        </form>
+        <div>
+        <h2 className="signup-link">New User? <Link className="toSignup" to="/signup">Signup here!</Link></h2>
+      </div>
+      </div>
+
+
     </div>
 
-    <div>
-    <h2 className="signup-link">New User? <Link to="/signup">Signup here!</Link></h2>
-  </div>
-</div>
 
-    
   );
 }
 

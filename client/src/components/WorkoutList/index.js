@@ -8,6 +8,7 @@ import { Modal, Button } from "react-bootstrap";
 import { removeWorkoutId } from "../../utils/localStorage";
 import WorkoutDetail from "../WorkoutDetail";
 import Auth from "../../utils/auth";
+import './workoutlist.css';
 
 function WorkoutList() {
   const [showModal, setShowModal] = useState(false);
@@ -90,7 +91,7 @@ function WorkoutList() {
           {selectedWorkout && <WorkoutDetail workout={selectedWorkout} onClose={handleCloseWorkoutDetail} />}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => setSelectedWorkout(null)}>Close</Button>
+          <Button className="close-detail" onClick={() => setSelectedWorkout(null)}>Close</Button>
         </Modal.Footer>
       </Modal>
     </>

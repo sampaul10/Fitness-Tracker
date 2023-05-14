@@ -88,15 +88,15 @@ const resolvers = {
     addWorkout: async (parent, { workoutInput }, context) => {
       //console.log(context);
       if (context.user) {
-        console.log(workoutInput);
+        //console.log(workoutInput);
         const updatedWorkoutData = {
           ...workoutInput,
           repetition: parseInt(workoutInput.repetition),
           distance: parseFloat(workoutInput.distance),
         };
-        console.log(updatedWorkoutData);
+        //console.log(updatedWorkoutData);
         const workout = await Workout.create(updatedWorkoutData);
-        console.log(workout._id);
+        //console.log(workout._id);
 
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },

@@ -2,28 +2,40 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Auth from "../utils/auth";
 import { useMutation } from '@apollo/client';
-//import { LOGOUT_USER } from '../utils/mutations';
 import '../../src/App.css'
 
 const Nav = () => {
   const location = useLocation();
-  //const [logoutUser] = useMutation(LOGOUT_USER);
 
   const handleLogout = () => {
     // Remove the JWT token from local storage
     localStorage.removeItem('id_token');
     // Execute the logout mutation
-    //logoutUser();
     Auth.logout();
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand">My App</Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <Link to="/" className="navbar-brand">U-Fit</Link>
+        {/* Navbar turns into menu icon in smaller page */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          onClick={() => {
+            const navbarNav = document.getElementById('navbarNav');
+            navbarNav.classList.toggle('show');
+          }}
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
+
+
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}>
@@ -35,8 +47,8 @@ const Nav = () => {
                 <li className={`nav-item ${location.pathname === '/mypage' ? 'active' : ''}`}>
                   <Link to="/mypage" className="nav-link">My Page</Link>
                 </li>
-                <li>
-                  <Link onClick={handleLogout} className="btn btn-outline-primary">Logout</Link>
+                <li className="nav-item">
+                  <Link onClick={handleLogout} className="nav-link">Logout</Link>
                 </li>
               </>
             ) : (

@@ -4,10 +4,13 @@ import "./Timer.css";
 
 
 const Timer = () => {
+
   const [state, setState] = useState("");
   const handleButtonClick = (value) => {setState(value)};
+
   // Random component
     const Completionist = () => <span> Time's up! Great work!</span>;
+
 
   const renderer1 = ({seconds, minutes, hours, completed}) => {
   return (
@@ -89,5 +92,6 @@ const Timer = () => {
       {state === "oneMin" &&   <Countdown date={Date.now() + 60000} renderer={renderer3} />}
         </div>
   )};
+
 
 export default Timer;

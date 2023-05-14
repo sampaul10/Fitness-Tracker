@@ -1,0 +1,11 @@
+.close-detail {
+    background-color: #FFCC33 !important;
+    border: #FFCC33 !important;
+    color: #7C0902 !important;
+  }
+
+  .close-detail:hover{
+    background-color: green !important;
+    color: white !important;
+  }
+
