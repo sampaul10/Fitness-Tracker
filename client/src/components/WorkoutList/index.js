@@ -7,7 +7,6 @@ import { idbPromise } from '../../utils/helpers';
 import { Modal, Button } from "react-bootstrap";
 import { removeWorkoutId } from "../../utils/localStorage";
 import WorkoutDetail from "../WorkoutDetail";
-import Auth from "../../utils/auth";
 import './workoutlist.css';
 
 function WorkoutList() {
@@ -25,8 +24,8 @@ function WorkoutList() {
 
   const userData = data?.me || {};
 
-  console.log(userData);
-  console.log(userData.workouts);
+  //console.log(userData);
+  //console.log(userData.workouts);
 
   useEffect(() => {
     if (userData.workouts) {
@@ -40,7 +39,7 @@ function WorkoutList() {
       });
     } else if (!loading) {
       idbPromise('workouts', 'get').then((workouts) => {
-        console.log(workouts);
+        //console.log(workouts);
         dispatch({
           type: UPDATE_WORKOUTS,
           workouts: workouts,
@@ -56,7 +55,7 @@ function WorkoutList() {
   }
 
   function filterWorkouts() {
-    console.log(currentCategory);
+    //console.log(currentCategory);
     if (!currentCategory) {
       return state.workouts;
     }

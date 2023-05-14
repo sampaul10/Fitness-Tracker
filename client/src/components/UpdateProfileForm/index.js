@@ -10,7 +10,7 @@ const UpdateProfileForm = () => {
 
     const userData = data?.me || {};
 
-    const [profileFormData, setProfileFormData] = useState({
+    const [profileFormData, setProfileFormData] = useState({ //intial state from user's preexisitng data (to keep info if user's doesn't make changes)
         age: userData.age,
         weight: userData.weight,
         height: userData.height,

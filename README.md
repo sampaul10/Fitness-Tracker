@@ -1,6 +1,6 @@
 # Fitness-Tracker
 
-U-Fit is an fitness tracker web application that helps the user to track their workouts and provide guides on exercises.
+U-Fit is an fitness tracker web application that helps the user to track their workouts and provides guides on exercises.
 
 ## Content
 
@@ -34,7 +34,7 @@ U-Fit is an fitness tracker web application that helps the user to track their w
     ![update-profile](./Assets/updateprofile.PNG)
 * User has option to see different timer on 'Timer' page.
 * User has access to both Dashboard and Timer with or without being logged in.
-* Footer includes useful links for exercise
+* The footer includes useful links for exercise that user can refer to for their exercise.
     ![footer](./Assets/footer.PNG)
 
 
