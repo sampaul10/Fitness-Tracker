@@ -1,77 +1,97 @@
-import React from "react";
-// import { Link, useLocation } from "react-router-dom";
-// import ReactDOM from "react-dom";
+import React, { useState } from "react";
 import Countdown from "react-countdown";
-import "./Timer.css"
+import "./Timer.css";
+
 
 const Timer = () => {
-  // const stopWatch = ;
-  //   const countdown1 =   {  
-  // };
+
+  const [state, setState] = useState("");
+  const handleButtonClick = (value) => {setState(value)};
+
   // Random component
-  const Completionist = () => <span>You are good to go!</span>;
+    const Completionist = () => <span> Time's up! Great work!</span>;
 
-  // Renderer callback with condition
-  const renderer = ({ hours, minutes, seconds, completed }) => {
+
+  const renderer1 = ({seconds, minutes, hours, completed}) => {
+  return (
+    completed ? <Completionist /> : 
+  <span>
+    <div>
+      <div id="countdown">
+        <svg viewBox="-50 -50 100 100" strokeWidth="10">
+          <circle r="45"></circle>
+          <circle
+            r="45"
+            strokeDasharray="282.7433388230814"
+            strokeDashoffset="282.7433388230814px"
+            ></circle>
+        </svg>
+      </div>
+    </div>
+  </span>
+  )};
+  const renderer2 = ({seconds, minutes, hours, completed}) => {
     if (completed) {
-      // Render a completed state
-      return (
-        <div className="container">
-          <Completionist />
-        </div>
-      );
-    } else {
-      // Render a countdown
-      return (
+      return(<Completionist />);} else{ 
+        return(      
         <span>
-          {/* {hours}:{minutes}:{seconds} */}
-          <div>
-            <div className="countdown">
-              <svg viewBox="-50 -50 100 100" strokeWidth="10">
-                <circle r="45"></circle>
-                <circle
-                  r="45"
-                  strokeDasharray="282.7433388230814"
-                  strokeDashoffset="282.7433388230814px"
-                ></circle>
-              </svg>
-            </div>
-          </div>
+      <div>
+        <div id="countdown2">
+          <svg viewBox="-50 -50 100 100" strokeWidth="10">
+            <circle r="45"></circle>
+            <circle
+              r="45"
+              strokeDasharray="282.7433388230814"
+              strokeDashoffset="282.7433388230814px"
+              ></circle>
+          </svg>
+        </div>
+      </div>
+      </span>
+  )}
+        };
+  const renderer3 = ({seconds, minutes, hours, completed}) => {
+    return(
+      completed ? <Completionist /> : 
+      <span>
+      <div>
+        <div id="countdown3">
+          <svg viewBox="-50 -50 100 100" strokeWidth="10">
+            <circle r="45"></circle>
+            <circle
+              r="45"
+              strokeDasharray="282.7433388230814"
+              strokeDashoffset="282.7433388230814px"
+              ></circle>
+          </svg>
+        </div>
+      </div>
+    </span>
+    )};
 
-          <div>
-            <div className="countdown2">
-              <svg viewBox="-50 -50 100 100" strokeWidth="10">
-                <circle r="45"></circle>
-                <circle
-                  r="45"
-                  strokeDasharray="282.7433388230814"
-                  strokeDashoffset="282.7433388230814px"
-                ></circle>
-              </svg>
-            </div>
-          </div>
+    // Renderer callback with condition
+  return (
+    <div>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            onClick={() => handleButtonClick("twentySec")}
+            > 20 Seconds </button>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            onClick={() => handleButtonClick("thirtySec")}
+            > 30 Seconds </button>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            onClick={() => handleButtonClick("oneMin")}
+            > 1 Minute </button>
+      {state === "twentySec" &&   <Countdown date={Date.now() + 20000} renderer={renderer1} />}
+      {state === "thirtySec" &&   <Countdown date={Date.now() + 30000} renderer={renderer2} />}
+      {state === "oneMin" &&   <Countdown date={Date.now() + 60000} renderer={renderer3} />}
+        </div>
+  )};
 
-          <div>
-            <div className="countdown3">
-              <svg viewBox="-50 -50 100 100" strokeWidth="10">
-                <circle r="45"></circle>
-                <circle
-                  r="45"
-                  strokeDasharray="282.7433388230814"
-                  strokeDashoffset="282.7433388230814px"
-                ></circle>
-              </svg>
-            </div>
-          </div>
-        </span>
-      );
-    }
-  };
-
-  // ReactDOM.render(
-  return <Countdown date={Date.now() + 20000} renderer={renderer} />
-  //   document.getElementById("root")
-  // );
-};
 
 export default Timer;

@@ -2,14 +2,18 @@
   min-height: 80vh;
 }
 
-.countdown {
+
+#countdown {
+
   display: grid;
   margin: 1em auto;
   width: 20em;
   height: 20em;
 }
 
-.countdown::after {
+
+#countdown::after {
+
   grid-column: 1;
   grid-row: 1;
   place-self: center;
@@ -152,14 +156,18 @@ svg {
 
 
 /* timer 2 */
-.countdown2 {
+
+#countdown2 {
+
   display: grid;
   margin: 1em auto;
   width: 20em;
   height: 20em;
 }
 
-.countdown2::after {
+
+#countdown2::after {
+
   grid-column: 1;
   grid-row: 1;
   place-self: center;
@@ -308,7 +316,9 @@ svg {
   transform: rotate(-90deg);
   stroke-linecap: round;
   stroke: #8a9b0f;
-  animation: arc2 30s linear;
+
+  animation: arc2 30s linear infinite;
+
   animation-name: arc2, col2;
 }
 
@@ -341,14 +351,18 @@ svg {
 }
 
 /* timer 3 */
-.countdown3 {
+
+#countdown3 {
+
   display: grid;
   margin: 1em auto;
   width: 20em;
   height: 20em;
 }
 
-.countdown3::after {
+
+#countdown3::after {
+
   grid-column: 1;
   grid-row: 1;
   place-self: center;
@@ -617,7 +631,9 @@ svg {
   transform: rotate(-90deg);
   stroke-linecap: round;
   stroke: #8a9b0f;
-  animation: arc2 30s linear;
+
+  animation: arc2 60s linear infinite;
+
   animation-name: arc2, col2;
 }
 
