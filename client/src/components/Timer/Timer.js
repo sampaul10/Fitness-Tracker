@@ -7,7 +7,7 @@ const Timer = () => {
   const [state, setState] = useState("");
   const handleButtonClick = (value) => {setState(value)};
   // Random component
-    const Completionist = () => <span>You are good to go!</span>;
+    const Completionist = () => <span> Time's up! Great work!</span>;
 
   const renderer1 = ({seconds, minutes, hours, completed}) => {
   return (
