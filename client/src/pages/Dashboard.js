@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import './Dashboard.css';
-import image1 from '../assets/images/dashboard/image_1.png'
-import image2 from '../assets/images/dashboard/image_2.png'
-import image3 from '../assets/images/dashboard/image_3.png'
-import image4 from '../assets/images/dashboard/image_4.png'
-import image5 from '../assets/images/dashboard/image_5.png'
+import image1 from '../assets/images/dashboard/image1.jpeg'
+import image2 from '../assets/images/dashboard/image2.jpeg'
+import image3 from '../assets/images/dashboard/image3.jpeg'
+import image4 from '../assets/images/dashboard/image4.jpeg'
+import image5 from '../assets/images/dashboard/image5.jpeg'
 
 const Dashboard = () => {
     const images = [
