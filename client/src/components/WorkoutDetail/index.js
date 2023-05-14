@@ -9,7 +9,7 @@ import './workoutdetail.css'
 const WorkoutDetail = (props) => {
     //console.log(props.workout.name);
     const [removeWorkout, { error }] = useMutation(REMOVE_WORKOUT, {
-        refetchQueries: [{ query: GET_ME }]
+        refetchQueries: [{ query: GET_ME }] //refetch queries to udpate the workout list after deleting workout
       });
 
     const handleRemoveWorkout = async (id) => {

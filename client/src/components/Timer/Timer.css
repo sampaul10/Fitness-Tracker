@@ -1,3 +1,33 @@
+.timer-completed {
+  font-weight: bold;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.timer-completed-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.timer-button {
+  background-color: #FFBA00 !important;
+  margin: 2% 0 !important;
+  width: 40% !important;
+  height: 5rem !important;
+  font-weight: bold !important;
+  font-size: 140% !important;
+}
+
+.timer-button:hover {
+  background-color: #B22222 !important;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .container {
   min-height: 80vh;
 }

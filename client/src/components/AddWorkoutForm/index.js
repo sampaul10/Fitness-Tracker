@@ -7,10 +7,6 @@ import Auth from "../../utils/auth";
 import { saveWorkoutIds, getSavedWorkoutIds } from "../../utils/localStorage";
 import './addworkoutform.css'
 
-//handle addworkout form submit
-//user should have drop down list for the workout data that is pre-seeded
-//in their list of exercise, there should be option to filter the exercise (bodyPart, equipment, target)
-
 const AddWorkoutForm = () => {
   const [workoutFormData, setWorkoutFormData] = useState({
     _id: "",
