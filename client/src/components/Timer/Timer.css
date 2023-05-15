@@ -197,11 +197,11 @@ svg {
   grid-row: 1;
   place-self: center;
   font: 5em/2 ubuntu mono, consolas, monaco, monospace;
-  animation: num 30s steps(1) infinite;
+  animation: num2 30s steps(1) infinite;
   content: "0:" counter(s, decimal-leading-zero);
 }
 
-@keyframes num {
+@keyframes num2 {
   0% {
     counter-reset: s 30;
   }
@@ -348,11 +348,11 @@ svg {
   grid-row: 1;
   place-self: center;
   font: 5em/2 ubuntu mono, consolas, monaco, monospace;
-  animation: num 60s steps(1) infinite;
+  animation: num3 60s steps(1) infinite;
   content: "0:" counter(s, decimal-leading-zero);
 }
 
-@keyframes num {
+@keyframes num3 {
   0% {
     counter-reset: s 60;
   }
