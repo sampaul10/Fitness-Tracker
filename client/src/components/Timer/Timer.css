@@ -190,169 +190,130 @@ svg {
 
 
 /* timer 2 */
-
 #countdown2 {
-
   display: grid;
   margin: 1em auto;
   width: 20em;
   height: 20em;
 }
-
-
 #countdown2::after {
-
   grid-column: 1;
   grid-row: 1;
   place-self: center;
   font: 5em/2 ubuntu mono, consolas, monaco, monospace;
-  animation: num2 30s steps(1);
+  animation: num 30s steps(1) infinite;
   content: "0:" counter(s, decimal-leading-zero);
 }
 
-@keyframes num2 {
+@keyframes num {
   0% {
     counter-reset: s 30;
   }
-
-  3.3% {
+  2% {
     counter-reset: s 29;
   }
-
-  6.6% {
+  5% {
     counter-reset: s 28;
   }
-
-  9.9% {
+  8% {
     counter-reset: s 27;
   }
-
-  13.2% {
+  10% {
     counter-reset: s 26;
   }
-
-  16.5% {
+  14% {
     counter-reset: s 25;
   }
-
-  19.8% {
+  17% {
     counter-reset: s 24;
   }
-
-  23.1% {
+  20% {
     counter-reset: s 23;
   }
-
-  26.4% {
+  23% {
     counter-reset: s 22;
   }
-
-  29.7% {
+  26% {
     counter-reset: s 21;
   }
-
-  33% {
+  29% {
     counter-reset: s 20;
   }
-
-  36.3% {
+  32% {
     counter-reset: s 19;
   }
-
-  39.6% {
+  35% {
     counter-reset: s 18;
   }
-
-  42.9% {
+  37% {
     counter-reset: s 17;
   }
-
-  46.2% {
+  44% {
     counter-reset: s 16;
   }
-
-  49.5% {
+  47% {
     counter-reset: s 15;
   }
-
-  52.8% {
+  50% {
     counter-reset: s 14;
   }
-
-  56.1% {
+  55% {
     counter-reset: s 13;
   }
-
-  59.4% {
+  59% {
     counter-reset: s 12;
   }
-
-  62.7% {
+  64% {
     counter-reset: s 11;
   }
-
-  66% {
+  69% {
     counter-reset: s 10;
   }
-
-  69.3% {
+  74% {
     counter-reset: s 9;
   }
-
-  72.6% {
+  77% {
     counter-reset: s 8;
   }
-
-  75.9% {
+  80% {
     counter-reset: s 7;
   }
-
-  79.2% {
+  83% {
     counter-reset: s 6;
   }
-
-  82.5% {
+  85% {
     counter-reset: s 5;
   }
-
-  85.8% {
+  89% {
     counter-reset: s 4;
   }
-
-  89.1% {
+  92% {
     counter-reset: s 3;
   }
-
-  92.4% {
+  95% {
     counter-reset: s 2;
   }
-
-  95.7% {
+  98% {
     counter-reset: s 1;
   }
-
-  99% {
+  100% {
     counter-reset: s 0;
   }
 }
-
 svg {
   grid-column: 1;
   grid-row: 1;
 }
 
-[r2] {
+[r] {
   fill: none;
   stroke: silver;
 }
-
-[r2]+[r2] {
+[r] + [r] {
   transform: rotate(-90deg);
   stroke-linecap: round;
   stroke: #8a9b0f;
-
   animation: arc2 30s linear infinite;
-
   animation-name: arc2, col2;
 }
 
@@ -361,339 +322,260 @@ svg {
     stroke-dashoffset: 0px;
   }
 }
-
 @keyframes col2 {
   0% {
     stroke: #8a9b0f;
   }
-
   25% {
     stroke: #f8ca00;
   }
-
   50% {
     stroke: #e97f02;
   }
-
   75% {
     stroke: #bd1550;
   }
-
   100% {
     stroke: #490a3d;
   }
 }
 
 /* timer 3 */
-
 #countdown3 {
-
   display: grid;
   margin: 1em auto;
   width: 20em;
   height: 20em;
 }
-
-
 #countdown3::after {
-
   grid-column: 1;
   grid-row: 1;
   place-self: center;
   font: 5em/2 ubuntu mono, consolas, monaco, monospace;
-  animation: num3 60s steps(1);
+  animation: num 60s steps(1) infinite;
   content: "0:" counter(s, decimal-leading-zero);
 }
 
-@keyframes num3 {
-  1.6% {
+@keyframes num {
+  0% {
     counter-reset: s 60;
   }
-
-  3.2% {
+  2% {
     counter-reset: s 59;
   }
-
-  4.8% {
+  3% {
     counter-reset: s 58;
   }
-
-  6.4% {
+  5% {
     counter-reset: s 57;
   }
-
-  8% {
+  7% {
     counter-reset: s 56;
   }
-
-  9.6% {
+  8% {
     counter-reset: s 55;
   }
-
-  11.2% {
+  10% {
     counter-reset: s 54;
   }
-
-  12.8% {
+  12% {
     counter-reset: s 53;
   }
-
-  14.4% {
+  13% {
     counter-reset: s 52;
   }
-
-  16% {
+  15% {
     counter-reset: s 51;
   }
-
-  17.6% {
+  17% {
     counter-reset: s 50;
   }
-
-  19.2% {
+  18% {
     counter-reset: s 49;
   }
-
-  20.8% {
+  19% {
     counter-reset: s 48;
   }
-
-  22.4% {
+  20% {
     counter-reset: s 47;
   }
-
-  24% {
+  21% {
     counter-reset: s 46;
   }
-
-  25.6% {
+  23% {
     counter-reset: s 45;
   }
-
-  27.2% {
+  25% {
     counter-reset: s 44;
   }
-
-  28.8% {
+  26% {
     counter-reset: s 43;
   }
-
-  30.4% {
+  28% {
     counter-reset: s 42;
   }
-
-  32% {
+  29% {
     counter-reset: s 41;
   }
-
-  33.6% {
+  30% {
     counter-reset: s 40;
   }
-
-  35.2% {
+  31% {
     counter-reset: s 39;
   }
-
-  36.8% {
+  33% {
     counter-reset: s 38;
   }
-
-  38.4% {
+  35% {
     counter-reset: s 37;
   }
-
-  40% {
+  37% {
     counter-reset: s 36;
   }
-
-  41.6% {
+  38% {
     counter-reset: s 35;
   }
-
-  43.2% {
+  40% {
     counter-reset: s 34;
   }
-
-  44.8% {
+  43% {
     counter-reset: s 33;
   }
-
-  46.4% {
+  45% {
     counter-reset: s 32;
   }
-
-  48% {
+  47% {
     counter-reset: s 31;
   }
-
-  49.6% {
+  49% {
     counter-reset: s 30;
   }
-
-  51.2% {
+  50% {
     counter-reset: s 29;
   }
-
-  52.8% {
+  52% {
     counter-reset: s 28;
   }
-
-  54.4% {
+  53% {
     counter-reset: s 27;
   }
-
-  56% {
+  55% {
     counter-reset: s 26;
   }
-
-  57.6% {
+  58% {
     counter-reset: s 25;
   }
-
-  59.2% {
+  59% {
     counter-reset: s 24;
   }
-
-  60.8% {
+  60% {
     counter-reset: s 23;
   }
-
-  62.4% {
+  62% {
     counter-reset: s 22;
   }
-
   64% {
     counter-reset: s 21;
   }
-
-  65.6% {
+  66% {
     counter-reset: s 20;
   }
-
-  67.2% {
+  67% {
     counter-reset: s 19;
   }
-
-  68.8% {
+  69% {
     counter-reset: s 18;
   }
-
-  70.4% {
+  71% {
     counter-reset: s 17;
   }
-
-  72% {
+  73% {
     counter-reset: s 16;
   }
-
-  73.6% {
+  75% {
     counter-reset: s 15;
   }
-
-  75.2% {
+  76% {
     counter-reset: s 14;
   }
-
-  76.8% {
+  78% {
     counter-reset: s 13;
   }
-
-  78.4% {
+  80% {
     counter-reset: s 12;
   }
-
-  80% {
+  81% {
     counter-reset: s 11;
   }
-
-  81.6% {
+  83% {
     counter-reset: s 10;
   }
-
-  83.2% {
+  84% {
     counter-reset: s 9;
   }
-
-  84.8% {
+  86% {
     counter-reset: s 8;
   }
-
-  86.4% {
+  88% {
     counter-reset: s 7;
   }
-
-  88% {
+  89% {
     counter-reset: s 6;
   }
-
-  89.6% {
+  91% {
     counter-reset: s 5;
   }
-
-  91.2% {
+  93% {
     counter-reset: s 4;
   }
-
-  92.8% {
+  94% {
     counter-reset: s 3;
   }
-
-  94.4% {
+  96% {
     counter-reset: s 2;
   }
-
-  96% {
+  98% {
     counter-reset: s 1;
   }
-
-  97.6% {
+  100% {
     counter-reset: s 0;
   }
 }
-
 svg {
   grid-column: 1;
   grid-row: 1;
 }
 
-[r2] {
+[r] {
   fill: none;
   stroke: silver;
 }
-
-[r2]+[r2] {
+[r] + [r] {
   transform: rotate(-90deg);
   stroke-linecap: round;
   stroke: #8a9b0f;
-
-  animation: arc2 60s linear infinite;
-
-  animation-name: arc2, col2;
+  animation: arc3 60s linear infinite;
+  animation-name: arc3, col3;
 }
 
-@keyframes arc2 {
+@keyframes arc3 {
   0% {
     stroke-dashoffset: 0px;
   }
 }
-
-@keyframes col2 {
+@keyframes col3 {
   0% {
     stroke: #8a9b0f;
   }
-
   25% {
     stroke: #f8ca00;
   }
-
   50% {
     stroke: #e97f02;
   }
-
   75% {
     stroke: #bd1550;
   }
-
   100% {
     stroke: #490a3d;
   }
