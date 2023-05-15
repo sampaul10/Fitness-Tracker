@@ -83,7 +83,7 @@ const Timer = () => {
 
   // Renderer callback with condition
   return (
-    <div>
+    <div className="timer-container">
       <div className="button-wrapper">
         <button
           className="btn btn-primary timer-button"

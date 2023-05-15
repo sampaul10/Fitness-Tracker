@@ -1,3 +1,7 @@
+.timer-container {
+  min-height: 80vh;
+}
+
 .timer-completed {
   font-weight: bold;
   font-size: 4rem;
