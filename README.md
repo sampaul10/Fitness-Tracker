@@ -74,5 +74,6 @@ U-Fit is an fitness tracker web application that helps the user to track their w
 - [MongoDB Atlas](https://www.mongodb.com/atlas/database)
 - CSS stylings that are used for Dashboard page: https://codepen.io/robb0wen/pen/KKoVOrq, http://www.brandgradients.com/gold-gradient/
 - How to refetch data after data deletion (Refetching queries): https://stackoverflow.com/questions/72801198/apollo-client-refetch-queries
+- Images used for Dashboard page: https://www.bodybuilding.com/content/10-best-muscle-building-shoulder-exercises.html
 
 
