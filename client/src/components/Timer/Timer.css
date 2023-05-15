@@ -186,169 +186,130 @@ svg {
 
 
 /* timer 2 */
-
 #countdown2 {
-
   display: grid;
   margin: 1em auto;
   width: 20em;
   height: 20em;
 }
-
-
 #countdown2::after {
-
   grid-column: 1;
   grid-row: 1;
   place-self: center;
   font: 5em/2 ubuntu mono, consolas, monaco, monospace;
-  animation: num2 30s steps(1);
+  animation: num 30s steps(1) infinite;
   content: "0:" counter(s, decimal-leading-zero);
 }
 
-@keyframes num2 {
+@keyframes num {
   0% {
     counter-reset: s 30;
   }
-
-  3.3% {
+  2% {
     counter-reset: s 29;
   }
-
-  6.6% {
+  5% {
     counter-reset: s 28;
   }
-
-  9.9% {
+  8% {
     counter-reset: s 27;
   }
-
-  13.2% {
+  10% {
     counter-reset: s 26;
   }
-
-  16.5% {
+  14% {
     counter-reset: s 25;
   }
-
-  19.8% {
+  17% {
     counter-reset: s 24;
   }
-
-  23.1% {
+  20% {
     counter-reset: s 23;
   }
-
-  26.4% {
+  23% {
     counter-reset: s 22;
   }
-
-  29.7% {
+  26% {
     counter-reset: s 21;
   }
-
-  33% {
+  29% {
     counter-reset: s 20;
   }
-
-  36.3% {
+  32% {
     counter-reset: s 19;
   }
-
-  39.6% {
+  35% {
     counter-reset: s 18;
   }
-
-  42.9% {
+  37% {
     counter-reset: s 17;
   }
-
-  46.2% {
+  44% {
     counter-reset: s 16;
   }
-
-  49.5% {
+  47% {
     counter-reset: s 15;
   }
-
-  52.8% {
+  50% {
     counter-reset: s 14;
   }
-
-  56.1% {
+  55% {
     counter-reset: s 13;
   }
-
-  59.4% {
+  59% {
     counter-reset: s 12;
   }
-
-  62.7% {
+  64% {
     counter-reset: s 11;
   }
-
-  66% {
+  69% {
     counter-reset: s 10;
   }
-
-  69.3% {
+  74% {
     counter-reset: s 9;
   }
-
-  72.6% {
+  77% {
     counter-reset: s 8;
   }
-
-  75.9% {
+  80% {
     counter-reset: s 7;
   }
-
-  79.2% {
+  83% {
     counter-reset: s 6;
   }
-
-  82.5% {
+  85% {
     counter-reset: s 5;
   }
-
-  85.8% {
+  89% {
     counter-reset: s 4;
   }
-
-  89.1% {
+  92% {
     counter-reset: s 3;
   }
-
-  92.4% {
+  95% {
     counter-reset: s 2;
   }
-
-  95.7% {
+  98% {
     counter-reset: s 1;
   }
-
-  99% {
+  100% {
     counter-reset: s 0;
   }
 }
-
 svg {
   grid-column: 1;
   grid-row: 1;
 }
 
-[r2] {
+[r] {
   fill: none;
   stroke: silver;
 }
-
-[r2]+[r2] {
+[r] + [r] {
   transform: rotate(-90deg);
   stroke-linecap: round;
   stroke: #8a9b0f;
-
   animation: arc2 30s linear infinite;
-
   animation-name: arc2, col2;
 }
 
@@ -357,32 +318,265 @@ svg {
     stroke-dashoffset: 0px;
   }
 }
-
 @keyframes col2 {
   0% {
     stroke: #8a9b0f;
   }
-
   25% {
     stroke: #f8ca00;
   }
-
   50% {
     stroke: #e97f02;
   }
-
   75% {
     stroke: #bd1550;
   }
-
   100% {
     stroke: #490a3d;
   }
 }
 
 /* timer 3 */
-
 #countdown3 {
+  display: grid;
+  margin: 1em auto;
+  width: 20em;
+  height: 20em;
+}
+#countdown3::after {
+  grid-column: 1;
+  grid-row: 1;
+  place-self: center;
+  font: 5em/2 ubuntu mono, consolas, monaco, monospace;
+  animation: num 60s steps(1) infinite;
+  content: "0:" counter(s, decimal-leading-zero);
+}
+
+@keyframes num {
+  0% {
+    counter-reset: s 60;
+  }
+  2% {
+    counter-reset: s 59;
+  }
+  3% {
+    counter-reset: s 58;
+  }
+  5% {
+    counter-reset: s 57;
+  }
+  7% {
+    counter-reset: s 56;
+  }
+  8% {
+    counter-reset: s 55;
+  }
+  10% {
+    counter-reset: s 54;
+  }
+  12% {
+    counter-reset: s 53;
+  }
+  13% {
+    counter-reset: s 52;
+  }
+  15% {
+    counter-reset: s 51;
+  }
+  17% {
+    counter-reset: s 50;
+  }
+  18% {
+    counter-reset: s 49;
+  }
+  19% {
+    counter-reset: s 48;
+  }
+  20% {
+    counter-reset: s 47;
+  }
+  21% {
+    counter-reset: s 46;
+  }
+  23% {
+    counter-reset: s 45;
+  }
+  25% {
+    counter-reset: s 44;
+  }
+  26% {
+    counter-reset: s 43;
+  }
+  28% {
+    counter-reset: s 42;
+  }
+  29% {
+    counter-reset: s 41;
+  }
+  30% {
+    counter-reset: s 40;
+  }
+  31% {
+    counter-reset: s 39;
+  }
+  33% {
+    counter-reset: s 38;
+  }
+  35% {
+    counter-reset: s 37;
+  }
+  37% {
+    counter-reset: s 36;
+  }
+  38% {
+    counter-reset: s 35;
+  }
+  40% {
+    counter-reset: s 34;
+  }
+  43% {
+    counter-reset: s 33;
+  }
+  45% {
+    counter-reset: s 32;
+  }
+  47% {
+    counter-reset: s 31;
+  }
+  49% {
+    counter-reset: s 30;
+  }
+  50% {
+    counter-reset: s 29;
+  }
+  52% {
+    counter-reset: s 28;
+  }
+  53% {
+    counter-reset: s 27;
+  }
+  55% {
+    counter-reset: s 26;
+  }
+  58% {
+    counter-reset: s 25;
+  }
+  59% {
+    counter-reset: s 24;
+  }
+  60% {
+    counter-reset: s 23;
+  }
+  62% {
+    counter-reset: s 22;
+  }
+  64% {
+    counter-reset: s 21;
+  }
+  66% {
+    counter-reset: s 20;
+  }
+  67% {
+    counter-reset: s 19;
+  }
+  69% {
+    counter-reset: s 18;
+  }
+  71% {
+    counter-reset: s 17;
+  }
+  73% {
+    counter-reset: s 16;
+  }
+  75% {
+    counter-reset: s 15;
+  }
+  76% {
+    counter-reset: s 14;
+  }
+  78% {
+    counter-reset: s 13;
+  }
+  80% {
+    counter-reset: s 12;
+  }
+  81% {
+    counter-reset: s 11;
+  }
+  83% {
+    counter-reset: s 10;
+  }
+  84% {
+    counter-reset: s 9;
+  }
+  86% {
+    counter-reset: s 8;
+  }
+  88% {
+    counter-reset: s 7;
+  }
+  89% {
+    counter-reset: s 6;
+  }
+  91% {
+    counter-reset: s 5;
+  }
+  93% {
+    counter-reset: s 4;
+  }
+  94% {
+    counter-reset: s 3;
+  }
+  96% {
+    counter-reset: s 2;
+  }
+  98% {
+    counter-reset: s 1;
+  }
+  100% {
+    counter-reset: s 0;
+  }
+}
+svg {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+[r] {
+  fill: none;
+  stroke: silver;
+}
+[r] + [r] {
+  transform: rotate(-90deg);
+  stroke-linecap: round;
+  stroke: #8a9b0f;
+  animation: arc3 60s linear infinite;
+  animation-name: arc3, col3;
+}
+
+@keyframes arc3 {
+  0% {
+    stroke-dashoffset: 0px;
+  }
+}
+@keyframes col3 {
+  0% {
+    stroke: #8a9b0f;
+  }
+  25% {
+    stroke: #f8ca00;
+  }
+  50% {
+    stroke: #e97f02;
+  }
+  75% {
+    stroke: #bd1550;
+  }
+  100% {
+    stroke: #490a3d;
+  }
+}
+/* #countdown3 {
 
   display: grid;
   margin: 1em auto;
@@ -642,7 +836,7 @@ svg {
     counter-reset: s 1;
   }
 
-  97.6% {
+  100% {
     counter-reset: s 0;
   }
 }
@@ -662,18 +856,18 @@ svg {
   stroke-linecap: round;
   stroke: #8a9b0f;
 
-  animation: arc2 60s linear infinite;
+  animation: arc3 60s linear infinite;
 
-  animation-name: arc2, col2;
+  animation-name: arc3, col3;
 }
 
-@keyframes arc2 {
+@keyframes arc3 {
   0% {
     stroke-dashoffset: 0px;
   }
 }
 
-@keyframes col2 {
+@keyframes col3 {
   0% {
     stroke: #8a9b0f;
   }
@@ -693,4 +887,4 @@ svg {
   100% {
     stroke: #490a3d;
   }
-}
+} */
